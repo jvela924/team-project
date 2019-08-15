@@ -11,9 +11,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sessions = require('express-session');
+const db = mongoose.connection;
+require('dotenv').config();
 
-require('dotenv').config()
-
+const PORT = process.env.PORT || port;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
@@ -23,7 +24,7 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(sessions({
-  secret: 'feedmeseymour',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -53,15 +54,15 @@ app.get('/disqover', (req, res) => {
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
 //Error / Success
-// db.on('error', (error) => {
-//   console.log(error.message + ' is Mongod not running?');
-// })
-// db.on('connected', () => {
-//   console.log('Mongo Connected: ', PROJECT3_DB);
-// });
-// db.on('disconnected', () => {
-//   console.log('Mongo Disconnected');
-// })
+db.on('error', (error) => {
+  console.log(error.message + ' is Mongod not running?');
+})
+db.on('connected', () => {
+  console.log('Mongo Connected: ', PROJECT3_DB);
+});
+db.on('disconnected', () => {
+  console.log('Mongo Disconnected');
+})
 
 //APP LISTENER
 app.listen(port, () => {
