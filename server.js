@@ -37,7 +37,7 @@ app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 const disqoverController = require('./controllers/disqover.js');
-app.use('/disqover' disqoverController);
+app.use('/disqover', disqoverController);
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
