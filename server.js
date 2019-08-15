@@ -11,10 +11,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sessions = require('express-session');
+<<<<<<< HEAD
 require('dotenv').config()
+=======
+const db = mongoose.connection;
+require('dotenv').config();
+>>>>>>> a89d3ab1e79ae70a7463ed31614d8764df2e66ed
 
-require('dotenv').config()
-
+const PORT = process.env.PORT || port;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
@@ -54,15 +58,15 @@ app.get('/disqover', (req, res) => {
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
 //Error / Success
-// db.on('error', (error) => {
-//   console.log(error.message + ' is Mongod not running?');
-// })
-// db.on('connected', () => {
-//   console.log('Mongo Connected: ', PROJECT3_DB);
-// });
-// db.on('disconnected', () => {
-//   console.log('Mongo Disconnected');
-// })
+db.on('error', (error) => {
+  console.log(error.message + ' is Mongod not running?');
+})
+db.on('connected', () => {
+  console.log('Mongo Connected: ', PROJECT3_DB);
+});
+db.on('disconnected', () => {
+  console.log('Mongo Disconnected');
+})
 
 //APP LISTENER
 app.listen(port, () => {

@@ -1,12 +1,14 @@
+////////////////////////////////////////////////////////////////////////
+// Necessary for Get, Find, Delete, Put routes routing
+////////////////////////////////////////////////////////////////////////
 const express = require('express');
 const router = express.Router();
 const Disqovers = require('../models/disqovers.js');
 
 
-//...farther down the page
 router.post('/', (req, res)=>{
     Disqovers.create(req.body, (err, createdItem)=>{
-        res.json(createdBookmark); //.json() will send proper headers in response so client knows it's json coming back
+        res.json(createdBookmark);
     });
 });
 
