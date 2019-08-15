@@ -11,12 +11,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sessions = require('express-session');
-<<<<<<< HEAD
-require('dotenv').config()
-=======
 const db = mongoose.connection;
 require('dotenv').config();
->>>>>>> a89d3ab1e79ae70a7463ed31614d8764df2e66ed
 
 const PORT = process.env.PORT || port;
 
@@ -26,7 +22,7 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 //MIDDLEWARE
 //============================
 app.use(express.static('public'));
-app.use(express.json());
+
 app.use(sessions({
   secret: process.env.SECRET,
   resave: false,
@@ -40,8 +36,8 @@ const userController = require('./controllers/users.js');
 app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
-const disqoverController = require('./controllers/disqover.js');
-app.use('/disqover' disqoverController);
+// const disqoverController = require('./controllers/disqover.js');
+// app.use('/disqover', disqoverController);
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
