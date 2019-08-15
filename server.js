@@ -19,3 +19,6 @@ db.on('connected', () => {
 db.on('disconnected', () => {
   console.log('Mongo Disconnected');
 })
+app.listen(port, () => {
+  console.log('Listening...');
+})
