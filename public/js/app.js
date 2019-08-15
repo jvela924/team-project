@@ -118,14 +118,4 @@ this.createItem = function(){
 
 this.getItem();
 
-
-
-
-
-
-
-
-
-
-
 }]);
