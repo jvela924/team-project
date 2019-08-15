@@ -64,6 +64,11 @@ db.on('disconnected', () => {
   console.log('Mongo Disconnected');
 })
 
+//CONNECT TO MONGOD LOCALLIY
+mongoose.connect('mongodb:localhost:27017/meancrud', {useNewUrlParser: true});
+mongoose.connection.once('open', () => {
+  console.log('Connected to Mongoose');
+})
 //APP LISTENER
 app.listen(port, () => {
   console.log('Listening...');
