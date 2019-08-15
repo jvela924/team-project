@@ -10,7 +10,7 @@ this.logOut = function(){
         url:'/sessions'
     }).then(function(response){
         console.log(response);
-        controller.loggedInUsername = null; //add this
+        controller.loggedInUsername = null;
     }, function(error){
         console.log(error);
     });
@@ -45,13 +45,13 @@ this.logIn = function(){
         controller.login = null;
         controller.credentials = null;
         controller.loggedInUsername = response.date.userData.username
-        controller.goApp(); //add this
+        controller.goAuthorization(); //add this
     }, function(error){
         console.log(error);
     })
 }
 
-this.goApp = function(){
+this.goAuthorization = function(){
     $http({
         method:'GET',
         url: '/app'
@@ -78,7 +78,7 @@ this.deleteItem = function(item){
 this.editItem = function(item){
     $http({
         method:'PUT',
-        url: '/bookmark/'+ item._id,
+        url: '/disqover/'+ item._id,
         data: {
           name: this.name,
           image: this.image,
@@ -104,7 +104,7 @@ this.getItem = function(){
       method:'GET',
       url: '/disqover/',
     }).then(function(response){
-      controller.books = response.data;
+      controller.item = response.data;
       console.log(response.data);
     });
   };
