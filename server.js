@@ -11,6 +11,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sessions = require('express-session');
+require('dotenv').config()
 
 
 //database variable for heroku connection
@@ -21,7 +22,7 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(sessions({
-  secret: 'feedmeseymour',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
