@@ -11,17 +11,20 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sessions = require('express-session');
+const db = mongoose.connection;
+require('dotenv').config();
 
+const PORT = process.env.PORT || port;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
 //============================
 //MIDDLEWARE
 //============================
-app.use(express.static('public'));
 app.use(express.json());
+app.use(express.static('public'));
 app.use(sessions({
-  secret: 'feedmeseymour',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -33,9 +36,12 @@ const userController = require('./controllers/users.js');
 app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
-const disqoverController = require('./controllers/disqover.js');
-app.use('/disqover' disqoverController);
+
+
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
+const disqoverController = require('./controllers/disqover.js');
+app.use('/disqover', disqoverController);
+// MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
     res.json(req.session.currentUser);
@@ -51,16 +57,20 @@ app.get('/disqover', (req, res) => {
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
 //Error / Success
-// db.on('error', (error) => {
-//   console.log(error.message + ' is Mongod not running?');
-// })
-// db.on('connected', () => {
-//   console.log('Mongo Connected: ', PROJECT3_DB);
-// });
-// db.on('disconnected', () => {
-//   console.log('Mongo Disconnected');
-// })
+db.on('error', (error) => {
+  console.log(error.message + ' is Mongod not running?');
+})
+db.on('connected', () => {
+  console.log('Mongo Connected: ', PROJECT3_DB);
+});
+db.on('disconnected', () => {
+  console.log('Mongo Disconnected');
+})
 
+//CONNECT TO MONGOD LOCALLY
+mongoose.connection.once('open', () => {
+  console.log('Connected to Mongoose');
+})
 //APP LISTENER
 app.listen(port, () => {
   console.log('Listening...');
