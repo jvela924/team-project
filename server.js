@@ -6,6 +6,7 @@ const sessions = require('express-session');
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
 
+app.use(express.static('public'));
 //Connect to MongoDB
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
