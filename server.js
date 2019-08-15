@@ -21,8 +21,8 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 //============================
 //MIDDLEWARE
 //============================
-app.use(express.static('public'));
 app.use(express.json());
+app.use(express.static('public'));
 app.use(sessions({
   secret: process.env.SECRET,
   resave: false,
@@ -36,9 +36,12 @@ const userController = require('./controllers/users.js');
 app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
-// const disqoverController = require('./controllers/disqover.js');
-// app.use('/disqover', disqoverController);
+
+
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
+const disqoverController = require('./controllers/disqover.js');
+app.use('/disqover', disqoverController);
+// MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
     res.json(req.session.currentUser);
