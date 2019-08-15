@@ -80,7 +80,13 @@ this.editItem = function(item){
         method:'PUT',
         url: '/bookmark/'+ item._id,
         data: {
-
+          name: this.name,
+          image: this.image,
+          age: this.age,
+          bio: this.bio,
+          fav_artists: this.fav_artists,
+          fav_movies: this.fav_movies,
+          username: this.username,
         }
     }).then(
         function(response){
@@ -108,7 +114,13 @@ this.createItem = function(){
            method:'POST',
            url: '/disqover/',
            data: {
-
+             name: this.name,
+             image: this.image,
+             age: this.age,
+             bio: this.bio,
+             fav_artists: this.fav_artists,
+             fav_movies: this.fav_movies,
+             username: this.username,
               }
        }).then(function(){
 
