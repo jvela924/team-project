@@ -37,7 +37,7 @@ app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 const disqoverController = require('./controllers/disqover.js');
-app.use('/disqover' disqoverController);
+app.use('/disqover', disqoverController);
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
@@ -64,6 +64,11 @@ db.on('disconnected', () => {
   console.log('Mongo Disconnected');
 })
 
+//CONNECT TO MONGOD LOCALLIY
+mongoose.connect('mongodb:localhost:27017/meancrud', {useNewUrlParser: true});
+mongoose.connection.once('open', () => {
+  console.log('Connected to Mongoose');
+})
 //APP LISTENER
 app.listen(port, () => {
   console.log('Listening...');
