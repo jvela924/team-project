@@ -70,7 +70,7 @@
             <h4>{{movie}}</h4>
           </div>
           <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
-          <a ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</a>
+          <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
           <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
             <h3>Name</h3>
             <input type="text" ng-model="disq.updatedName">
@@ -84,7 +84,7 @@
             <input type="text" ng-model="disq.updatedFav_artists">
             <h4>Favorite Movies</h4>
             <input type="text" ng-model="disq.updatedFav_movies"><br>
-            <input type="submit" value="Save Changes">
+            <input type="submit" value="Save Changes" class="buttontwo">
           </form>
         </div>
       </div>
