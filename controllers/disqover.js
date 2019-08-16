@@ -26,6 +26,11 @@ router.delete('/:id', (req,res) => {
 })
 
 router.put('/:id', (req,res) => {
+  // req.body.username = req.session.currentUser.username
+  // let artists = req.body.fav_artists.split(',')
+  // req.body.fav_artists = artists
+  // let movies = req.body.fav_movies.split(',')
+  // req.body.fav_movies = movies
   Disqover.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedDisqover) => {
     res.json(updatedDisqover)
   })
