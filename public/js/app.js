@@ -141,7 +141,7 @@ app.controller('disqoverController', ['$http', function($http){
   this.music = [];
   this.userInput = '';
   this.category = '';
-  this.baseURL = "https://tastedive.com/api/similar?";
+  this.baseURL = "http://tastedive.com/api/similar?";
   this.apiKey = "k=" + "342493-Disqover-3UG7TS7C";
   this.info = "info=1";
   this.ampersand = "&";
@@ -157,8 +157,8 @@ app.controller('disqoverController', ['$http', function($http){
       method: 'GET',
       url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
     }).then(function(response){
-      this.music = response.data.results
-      console.log(this.musicResults);
+      this.music = response.data.Similar.Results
+      console.log(this.music);
     }, function(error){
       console.log(error);
     })
@@ -168,7 +168,8 @@ app.controller('disqoverController', ['$http', function($http){
       method: 'GET',
       url: this.searchURL
     }).then(function(response){
-      this.movieResults = response.data.results
+      this.movieResults = response.data.Similar.Results
+      console.log(this.movie);
     }, function(error){
       console.log(error);
     })
