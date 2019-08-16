@@ -1,5 +1,5 @@
 body{
-  background-color: whitesmoke;
+  background-color: white;
   margin: 0;
 }
 
@@ -9,17 +9,19 @@ header{
   font-family: 'Quicksand', sans-serif;
   color: white;
   width: 100%;
-  height: 150px;
+  height: 200px;
 background-image: url("https://media3.giphy.com/media/l4FGBX2RxxywvlZ3a/source.gif");
 background-size: cover;
+padding: 25px;
+
 }
 header:hover{
   text-align: center;
   font-size: 100px;
   font-family: 'Quicksand', sans-serif;
-  color: white;
+  color: red;
   width: 100%;
-  height: 150px;
+  height: 200px;
 background-image: url("https://media0.giphy.com/media/3oEjHU5ZOyfDOzbSyk/giphy.gif?cid=790b7611d313ccec898467f215691918f2aa72bbcac66e69&rid=giphy.gif");
 background-size: cover;
 }
@@ -29,8 +31,10 @@ nav{
   flex-direction: column;
   justify-content: space-around;
     font-family: 'Quicksand', sans-serif;
-    background-color: #212121;
+  background-image: url("https://ctl.s6img.com/society6/img/4FgqAkWQm-IISwbS2QYL5WWPUv4/w_1500/comforters/swatch/~artwork,fw_6000,fh_6000,iw_6000,ih_6000/s6-original-art-uploads/society6/uploads/misc/014c5b191ed94393bd365d111f545cff/~~/lightning-bolt-pattern-black-white-comforters.jpg");
     color: red;
+    border: 10px solid white;
+    box-shadow: 10px 5px 5px black;
 }
 
 input{
@@ -42,9 +46,28 @@ a{
   color: white;
 }
 
+a:hover{
+  text-decoration: none;
+  color: grey;
+}
+
+footer {
+font-size: 20px;
+position: absolute;
+bottom: 0;
+width: 100%;
+padding-top:10px;
+padding-bottom:10px;
+background-color: black;
+color: red;
+font-family: 'Quicksand', sans-serif;
+text-align: center;
+}
+
 .red{
   color: red;
 }
+
 
 .create{
   margin: 20px;
@@ -78,4 +101,16 @@ a{
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
+}
+
+.wrapper{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper .wrapper__video{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
