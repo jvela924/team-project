@@ -1,3 +1,4 @@
+//APIKEY call here somehow.
 const app = angular.module('MyApp', []);
 app.controller('disqoverController', ['$http', function($http){
   // fetch(process.env.APIKEY)
