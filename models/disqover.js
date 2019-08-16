@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
-const disqoverSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+const disqoverSchema = Schema({
   name: String,
   image: String,
   age: Number,

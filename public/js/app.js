@@ -70,7 +70,6 @@ this.deleteItem = function(item){
       }).then(
           function(response){
               controller.getItem();
-
           }
       );
   }

@@ -9,21 +9,23 @@ router.post('/', (req,res) => {
 })
 
 router.get('/', (req,res) => {
-  Disqovers.find({}, (err, foundDisqovers) => {
+  Disqover.find({}, (err, foundDisqovers) => {
     res.json(foundDisqovers)
   })
 })
 
 router.delete('/:id', (req,res) => {
-  Disqovers.findByIdAndRemove(req.params.id, (err, deletedDisqover) => {
+  Disqover.findByIdAndRemove(req.params.id, (err, deletedDisqover) => {
     res.json(deletedDisqover)
   })
 })
 
 router.put('/:id', (req,res) => {
-  Disqovers.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedDisqover) => {
+  Disqover.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedDisqover) => {
     res.json(updatedDisqover)
   })
 })
-
+router.get('/', (req, res) => {
+  res.send('index');
+});
 module.exports = router;
