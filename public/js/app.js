@@ -1,7 +1,6 @@
 const app = angular.module('MyApp', []);
 
 app.controller('disqoverController', ['$http', function($http){
-
   const controller = this;
 
   this.logOut = function(){
@@ -51,24 +50,14 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
-  //this callback might be used if we add a different route for user login
-  // this.goAuthorization = function(){
-  //     $http({
-  //         method:'GET',
-  //         url: '/app'
-  //     }).then(function(response){
-  //         controller.loggedInUsername = response.data.username; //change this
-  //     }, function(){
-  //         console.log('error');
-  //     });
-  // }
-
   this.deleteItem = function(item){
+    console.log('hello');
       $http({
           method:'DELETE',
-          url: '/disqover/'+ item._id,
+          url: '/disqover/' + item._id
       }).then(
         function(response){
+
             controller.getItem();
       })
     }
