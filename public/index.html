@@ -87,10 +87,19 @@
             <input type="submit" value="Save Changes" class="buttontwo">
           </form>
         </div>
+        <div class="searchArea">
+          <form ng-submit="disq.getMusic()">
+            <input type="text" ng-model="disq.userInput">
+            <select ng-model="disq.category" name="category">
+              <option value="music">Music</option>
+              <option value="movies">Movies</option>
+            </select>
+            <input type="submit" value="Find Similar Results">
+          </form>
+        </div>
       </div>
-
-        <footer>
-            Made By J.A.M.
-        </footer>
+      <footer>
+          Made By J.A.M.
+      </footer>
   </body>
 </html>

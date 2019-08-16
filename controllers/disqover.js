@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+require('dotenv').config();
 const Disqover = require('../models/disqover.js')
 
 router.post('/', (req,res) => {
