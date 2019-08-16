@@ -1,7 +1,9 @@
 const app = angular.module('MyApp', []);
 
 app.controller('disqoverController', ['$http', function($http){
+
   const controller = this;
+  this.indexOfEditFormToShow = null
 
   this.logOut = function(){
     $http({
@@ -50,27 +52,39 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
-  this.deleteItem = function(item){
-    console.log('hello');
+  //this callback might be used if we add a different route for user login
+  // this.goAuthorization = function(){
+  //     $http({
+  //         method:'GET',
+  //         url: '/app'
+  //     }).then(function(response){
+  //         controller.loggedInUsername = response.data.username; //change this
+  //     }, function(){
+  //         console.log('error');
+  //     });
+  // }
+
+  this.deleteItem = function(disqover){
       $http({
-          method:'DELETE',
-          url: '/disqover/' + item._id
+          method: "DELETE",
+          url: '/disqover/' + disqover._id
       }).then(
         function(response){
-
-            controller.getItem();
+          controller.getItem();
+      }, function(error){
+        console.log(error);
       })
     }
 
-  this.editItem = function(item){
+  this.editItem = function(disqover){
       $http({
           method:'PUT',
-          url: '/disqover/'+ item._id,
+          url: '/disqover/'+ disqover._id,
           data: {
-            name: this.name,
-            image: this.image,
-            age: this.age,
-            bio: this.bio,
+            name: this.updatedName,
+            image: this.updatedImage,
+            age: this.updatedAge,
+            bio: this.updatedBio,
             fav_artists: this.fav_artists,
             fav_movies: this.fav_movies,
             // username: response.data.userData.username
@@ -92,7 +106,8 @@ app.controller('disqoverController', ['$http', function($http){
         url: '/disqover/',
       }).then(function(response){
         controller.items = response.data;
-        console.log(response.data);
+        // console.log(controller.items);
+        // console.log(response.data);
       });
     };
 
