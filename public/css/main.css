@@ -26,6 +26,7 @@ background-size: cover;
 
 nav{
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
     font-family: 'Quicksand', sans-serif;
     background-color: #212121;
@@ -50,6 +51,13 @@ a{
   text-align: center;
 
 }
+.logout{
+  display: block;
+  margin: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
 
 .button{
       width: 200px;
