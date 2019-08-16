@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="MyApp">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+  <body ng-controller="disqoverController as disq">
+    <header>
+      <a href="/">Dis<span class="red">q</span>over</a>  
+    </header>
+    <nav>
+        <div class="create">
+        <h2>Create User</h2>
+      <form ng-submit="auth.createUser()">
+          <input type="text" ng-model="auth.username" placeholder="Username" />
+          <input type="password" ng-model="auth.password" placeholder="Password"/>
+          <input class="button" type="submit" value="Create User">
+      </form>
+      </div>
+        <div class="login">
+      <h2>Log In</h2>
+            <form ng-submit="auth.logIn()">
+                <input type="text" ng-model="auth.login" placeholder="Username"/>
+                <input type="password" ng-model="auth.credentials" placeholder="Password" />
+                <input class="button" type="submit" value="Log In">
+            </form>
+            </div>
+      <div ng-if="auth.loggedInUsername">
+          <form ng-submit="auth.logOut()">
+          <input class="button" type="submit" value="Logout"/>
+          </form>
+      </div>
+
+    </nav>
+      <div class="container">
+        <div ng-repeat="page in disq.pages">
+        </div>
+      <div>
+
+        <footer>
+
+        </footer>
+  </body>
+</html>

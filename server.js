@@ -39,8 +39,8 @@ app.use('/sessions', sessionsController);
 
 
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
-const disqoverController = require('./controllers/disqover.js');
-app.use('/disqover', disqoverController);
+// const disqoverController = require('./controllers/disqover.js');
+// app.use('/disqover', disqoverController);
 // MAIN SERVER ROUTE FOR USER LOGIN SESSION
 app.get('/disqover', (req, res) => {
   if(req.session.currentUser){
