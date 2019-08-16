@@ -54,7 +54,7 @@ a:hover{
 
 footer {
 font-size: 20px;
-position: relative;
+position: fixed;
 height: 75px;
 bottom: 0;
 width: 100%;
@@ -130,7 +130,7 @@ box-shadow:         3px 3px 5px 6px #000;
 
 .item:hover{
     background-color:rgba(255,255,255, 1);
-  
+
       -moz-box-shadow:    inset 0 0 10px #000000;
    -webkit-box-shadow: inset 0 0 10px #000000;
    box-shadow:         inset 0 0 10px #000000;
