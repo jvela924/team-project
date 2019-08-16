@@ -1,4 +1,6 @@
 const app = angular.module('MyApp', []);
+
+
 app.controller('disqoverController', ['$http', function($http){
   // fetch(process.env.APIKEY)
   // .then((response) => {
@@ -152,24 +154,24 @@ app.controller('disqoverController', ['$http', function($http){
   // this.movieResults;
   // this.searchURL = this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.ampersand + this.type
   //https://tastedive.com/api/similar?info=1&API-KEY-HERE&limit=5&q=UserInputHere&type=Category
-  this.getMusic = function(){
+  this.getMusic = function(music){
     $http({
       method: 'GET',
       url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
     }).then(function(response){
-      this.music = response.data.Similar.Results
-      console.log(this.music);
+      controller.music = response.data.Similar.Results
+      console.log(controller.music);
     }, function(error){
       console.log(error);
     })
   }
-  this.getMovies = function(){
+  this.getMovies = function(music){
     $http({
       method: 'GET',
       url: this.searchURL
     }).then(function(response){
-      this.movieResults = response.data.Similar.Results
-      console.log(this.movie);
+      controller.movieResults = response.data.Similar.Results
+      console.log(controller.movie);
     }, function(error){
       console.log(error);
     })
