@@ -139,7 +139,7 @@ app.controller('disqoverController', ['$http', function($http){
   //Whatever you select turns into the type inside the search URL
   // What your searching for is called 'Q' . We are searching for similar results to 'Q'
   //This is for the most part how the URL will be built
-  this.movies = [];
+  // this.movies = [];
   this.music = [];
   this.userInput = '';
   this.category = '';
@@ -159,8 +159,10 @@ app.controller('disqoverController', ['$http', function($http){
       method: 'GET',
       url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
     }).then(function(response){
+
       controller.music = response.data.Similar.Results
       console.log(controller.music);
+
     }, function(error){
       console.log(error);
     })
