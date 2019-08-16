@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" ng-app="MyApp">
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-  <script src="/js/app.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <!--Load AngularJS File -->
+    <script src="/js/app.js" charset="utf-8"></script>
+    <!--Load Stylesheets and fonts -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  </head>
   <body ng-controller="disqoverController as disq">
     <header>
       <div class="vimeo-wrapper">
-   <iframe src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
-           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+        <iframe
+        src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
+        frameborder="0"
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen>
+        </iframe>
+      </div>
       <a href="/">Dis<span class="red">q</span>over</a>
     </header>
     <nav>

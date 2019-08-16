@@ -1,9 +1,11 @@
+// const dotenv = requirejs('dotenv');
+// const APIKEY = process.env.APIKEY
+//Define AngularJs application
 const app = angular.module('MyApp', []);
+/////////////////////
+//ANGULAR CONTROLLER
+/////////////////////
 app.controller('disqoverController', ['$http', function($http){
-  // fetch(process.env.APIKEY)
-  // .then((response) => {
-  //   apiKey = response;
-  // })
   const controller = this;
   this.indexOfEditFormToShow = null
 
@@ -142,7 +144,7 @@ app.controller('disqoverController', ['$http', function($http){
   this.userInput = '';
   this.category = '';
   this.baseURL = "https://tastedive.com/api/similar?";
-  this.apiKey = "k=" + "342493-Disqover-3UG7TS7C";
+  this.apiKey = "k=" + APIKEY/*"342493-Disqover-3UG7TS7C"*/
   this.info = "info=1";
   this.ampersand = "&";
   this.limit = "limit=5";
