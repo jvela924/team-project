@@ -14,6 +14,8 @@ const sessions = require('express-session');
 const db = mongoose.connection;
 require('dotenv').config();
 
+const APIKEY = process.env.APIKEY;
+module.exports = APIKEY;
 const PORT = process.env.PORT || port;
 
 //database variable for heroku connection
