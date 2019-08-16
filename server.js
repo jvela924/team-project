@@ -23,6 +23,9 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 //============================
 //MIDDLEWARE
 //============================
+
+
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use(sessions({
