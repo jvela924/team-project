@@ -69,6 +69,23 @@
           <div ng-repeat="movie in page.fav_movies">
             <h4>{{movie}}</h4>
           </div>
+          <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
+          <a ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</a>
+          <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
+            <h3>Name</h3>
+            <input type="text" ng-model="disq.updatedName">
+            <h3>Picture</h3>
+            <input type="text" ng-model="disq.updatedImage">
+            <h3>Age</h3>
+            <input type="number" ng-model="disq.updatedAge">
+            <h3>Bio</h3>
+            <textarea ng-model="disq.updatedBio" rows="8" cols="80">Enter your bio</textarea>
+            <h4>Favorite Artists</h4>
+            <input type="text" ng-model="disq.updatedFav_artists">
+            <h4>Favorite Movies</h4>
+            <input type="text" ng-model="disq.updatedFav_movies"><br>
+            <input type="submit" value="Save Changes">
+          </form>
         </div>
       </div>
 
