@@ -1,5 +1,7 @@
 const app = angular.module('MyApp', []);
 app.controller('disqoverController', ['$http', function($http){
+
+  
   // fetch(process.env.APIKEY)
   // .then((response) => {
   //   apiKey = response;
@@ -103,6 +105,7 @@ app.controller('disqoverController', ['$http', function($http){
   }
 
   this.getItem = function(){
+
       $http({
         method:'GET',
         url: '/disqover/',
@@ -153,27 +156,31 @@ app.controller('disqoverController', ['$http', function($http){
   // this.searchURL = this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.ampersand + this.type
   //https://tastedive.com/api/similar?info=1&API-KEY-HERE&limit=5&q=UserInputHere&type=Category
   this.getMusic = function(){
+
     $http({
       method: 'GET',
-      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
+      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category +
     }).then(function(response){
+
       this.music = response.data.results
       console.log(this.musicResults);
     }, function(error){
       console.log(error);
     })
   }
-  this.getMovies = function(){
-    $http({
-      method: 'GET',
-      url: this.searchURL
-    }).then(function(response){
-      this.movieResults = response.data.results
-    }, function(error){
-      console.log(error);
-    })
-  }
-
-  this.getItem();
-
-}]);
+//   this.getMovies = function(){
+//
+//     $http({
+//       method: 'GET',
+//       url: this.searchURL
+//     }).then(function(response){
+//
+//       this.movieResults = response.data.results
+//     }, function(error){
+//       console.log(error);
+//     })
+//   }
+//
+//   this.getItem();
+//
+// }]);
