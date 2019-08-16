@@ -15,8 +15,8 @@
     <nav>
       <div class="create">
         <div ng-if="disq.loggedInUsername">
-<h1>Welcome, {{disq.loggedInUsername}}</h1>
-</div>
+          <h1>Welcome, {{disq.loggedInUsername}}</h1>
+        </div>
           <div ng-if="!disq.loggedInUsername">
         <h2>Log In or Sign Up</h2>
         <input type="text" ng-model="disq.username" placeholder="Username" />
@@ -34,11 +34,37 @@
           <input class="button" type="submit" value="Logout"/>
           </form>
       </div>
-      </div>
+      <div ng-if="disq.loggedInUsername">
+        <form ng-submit="disq.createItem()">
+          <h1>Create your Disqover</h1>
+          <h3>Name</h3>
+          <input type="text" ng-model="disq.name">
+          <h3>Picture</h3>
+          <input type="text" ng-model="disq.image">
+          <h3>Age</h3>
+          <input type="number" ng-model="disq.age">
+          <h3>Bio</h3>
+          <textarea ng-model="disq.bio" rows="8" cols="80">Enter your bio</textarea>
+          <h4>Favorite Artists</h4>
+          <input type="text" ng-model="disq.fav_artists">
+          <h4>Favorite Movies</h4>
+          <input type="text" ng-model="disq.fav_movies"><br>
+          <input type="submit" value="Create!">
+        </form>
       </div>
     </nav>
       <div class="container">
-        <div ng-repeat="page in disq.pages">
+        <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items">
+          <h2>{{page.name}}</h2>
+          <img ng-src="{{page.image}}" alt="{{page.name}}">
+          <h3>{{page.age}}</h3>
+          <h4>{{page.bio}}</h4>
+          <div ng-repeat="artist in page.fav_artists">
+            <h4>{{artist}}</h4>
+          </div>
+          <div ng-repeat="movie in page.fav_movies">
+            <h4>{{movie}}</h4>
+          </div>
         </div>
       <div>
 

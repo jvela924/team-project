@@ -84,7 +84,7 @@ app.controller('disqoverController', ['$http', function($http){
             bio: this.bio,
             fav_artists: this.fav_artists,
             fav_movies: this.fav_movies,
-            username: this.username,
+            // username: response.data.userData.username
           }
       }).then(
           function(response){
@@ -102,7 +102,7 @@ app.controller('disqoverController', ['$http', function($http){
         method:'GET',
         url: '/disqover/',
       }).then(function(response){
-        controller.item = response.data;
+        controller.items = response.data;
         console.log(response.data);
       });
     };
@@ -118,10 +118,10 @@ app.controller('disqoverController', ['$http', function($http){
                bio: this.bio,
                fav_artists: this.fav_artists,
                fav_movies: this.fav_movies,
-               username: this.username,
+               // username: response.data.userData.username
                 }
-         }).then(function(){
-
+         }).then(function(response){
+           console.log(response);
       controller.getItem();
     });
       }

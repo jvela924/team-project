@@ -5,8 +5,8 @@ const disqoverSchema = new mongoose.Schema({
   image: String,
   age: Number,
   bio: String,
-  fav_artists: String,
-  fav_movies: String,
+  fav_artists: Array,
+  fav_movies: Array,
   username: String
 })
 
