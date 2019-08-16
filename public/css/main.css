@@ -10,7 +10,7 @@ header{
   color: white;
   width: 100%;
   height: 200px;
-background-image: url("https://media3.giphy.com/media/l4FGBX2RxxywvlZ3a/source.gif");
+
 background-size: cover;
 padding: 25px;
 
@@ -22,7 +22,7 @@ header:hover{
   color: red;
   width: 100%;
   height: 200px;
-background-image: url("https://media0.giphy.com/media/3oEjHU5ZOyfDOzbSyk/giphy.gif?cid=790b7611d313ccec898467f215691918f2aa72bbcac66e69&rid=giphy.gif");
+text-shadow: 2px 2px #ff0000;
 background-size: cover;
 }
 
@@ -44,6 +44,7 @@ input{
 a{
   text-decoration: none;
   color: white;
+  text-shadow: 2px 2px #000;
 }
 
 a:hover{
@@ -53,7 +54,8 @@ a:hover{
 
 footer {
 font-size: 20px;
-position: absolute;
+position: relative;
+height: 75px;
 bottom: 0;
 width: 100%;
 padding-top:10px;
@@ -103,14 +105,60 @@ text-align: center;
       transition: all 0.3s;
 }
 
-.wrapper{
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  margin: auto;
+}
+.item{
+  display: flex;
+  background-color:rgba(255,255,255, 0.8);
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 20%;
+  font-family: 'Quicksand', sans-serif;
+  margin: 50px;
+
+  -moz-box-shadow:    3px 3px 5px 6px #000;
+-webkit-box-shadow: 3px 3px 5px 6px #000;
+box-shadow:         3px 3px 5px 6px #000;
 }
 
-.wrapper .wrapper__video{
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.item:hover{
+    background-color:rgba(255,255,255, 1);
+  
+      -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+.item >img{
+  width: 50%;
+margin: auto;
+
+}
+
+.vimeo-wrapper {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   pointer-events: none;
+   overflow: hidden;
+}
+.vimeo-wrapper iframe {
+   width: 100vw;
+   height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+   min-height: 100vh;
+   min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }

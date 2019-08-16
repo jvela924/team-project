@@ -10,6 +10,10 @@
 </head>
   <body ng-controller="disqoverController as disq">
     <header>
+      <div class="vimeo-wrapper">
+   <iframe src="https://player.vimeo.com/video/137946748?background=1&autoplay=1&loop=1&byline=0&title=0"
+           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
       <a href="/">Dis<span class="red">q</span>over</a>
     </header>
     <nav>
@@ -54,7 +58,7 @@
       </div>
     </nav>
       <div class="container">
-        <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items">
+        <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
           <h2>{{page.name}}</h2>
           <img ng-src="{{page.image}}" alt="{{page.name}}">
           <h3>{{page.age}}</h3>
@@ -66,7 +70,7 @@
             <h4>{{movie}}</h4>
           </div>
         </div>
-      <div>
+      </div>
 
         <footer>
             Made By J.A.M.
