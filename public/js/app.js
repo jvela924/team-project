@@ -130,6 +130,45 @@ app.controller('disqoverController', ['$http', function($http){
     });
       }
 
+
+  //Have a section inside the page where you see your individual collection items
+  //In this page, it will say something like "Find Similar" like a button with an input type (dropdown list)
+  //The dropdown list will have the options of movies or music
+  //Whatever you select turns into the type inside the search URL
+  // What your searching for is called 'Q' . We are searching for similar results to 'Q'
+  //This is for the most part how the URL will be built
+  this.baseURL = "https://tastedive.com/api/similar?";
+  this.apiKey = "k=" + process.env.APIKEY;
+  this.info = "info=1";
+  this.ampersand = "&";
+  this.limit = "limit=5";
+  this.query = "q=" + this.userInput;
+  this.type = "type=" + this.category;
+  this.musicResults;
+  this.movieResults;
+  this.searchURL = this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.ampersand + this.type
+  //https://tastedive.com/api/similar?info=1&API-KEY-HERE&limit=5&q=UserInputHere&type=Category
+  this.getMusic = function(){
+    $http({
+      method: 'GET',
+      url: this.searchURL
+    }).then(function(response){
+      this.musicResults = response.data.results
+      console.log(this.musicResults);
+    }, function(error){
+      console.log(error);
+    })
+  }
+  this.getMovies = function(){
+    $http({
+      method: 'GET',
+      url: this.searchURL
+    }).then(function(response){
+      this.movieResults = response.data.results
+    }, function(error){
+      console.log(error);
+    })
+  }
   this.getItem();
 
 }]);
