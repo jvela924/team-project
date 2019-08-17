@@ -1,5 +1,9 @@
-const app = angular.module('MyApp', []);
-
+const app = angular.module('MyApp', []).config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',                    // trust all resources from the same origin
+        '*://www.youtube.com/embed**'   // trust all resources from `www.youtube.com`
+    ]);
+});
 
 app.controller('disqoverController', ['$http', function($http){
   // fetch(process.env.APIKEY)

@@ -14,10 +14,12 @@ router.post('/', (req,res) => {
   })
 })
 
+
+
 router.get('/', (req,res) => {
 
   Disqover.find({}, (err, foundDisqovers) => {
-      
+
     res.json(foundDisqovers)
   })
 })
