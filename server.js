@@ -10,7 +10,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const port = 3000;
 const sessions = require('express-session');
 //=================================================================
 //Below frameworks and npm packages are for spotify web api mostly
@@ -226,6 +225,6 @@ app.get('/refresh_token', (req, res) => {
 //====================================================================
 
 //APP LISTENER
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('Listening...');
 })
