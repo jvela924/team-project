@@ -1,11 +1,16 @@
-//APIKEY call here somehow.
-const app = angular.module('MyApp', []);
+const app = angular.module('MyApp', [])
+
 app.controller('disqoverController', ['$http', function($http){
-  // fetch(process.env.APIKEY)
-  // .then((response) => {
-  //   apiKey = response;
-  // })
   const controller = this;
+
+      this.toggle = function () {
+        console.log("hello");
+        this.state = !this.state;
+      };
+
+
+
+
   this.indexOfEditFormToShow = null
 
   this.logOut = function(){
@@ -139,10 +144,23 @@ app.controller('disqoverController', ['$http', function($http){
   // What your searching for is called 'Q' . We are searching for similar results to 'Q'
   //This is for the most part how the URL will be built
   // this.movies = [];
+
+  this.apiKey = function(){
+  $http({
+    method: 'GET',
+    url: '/apikey'
+  }).then(function(response){
+    console.log(response);
+    controller.apiKey = "k=" + response.data
+    console.log(controller.apiKey);
+  });
+}
+
+  this.apiKey();
   this.music = [];
   this.userInput = '';
   this.category = '';
-  this.baseURL = "http://tastedive.com/api/similar?";
+  this.baseURL = "https://tastedive.com/api/similar?";
   this.apiKey = "k=" + "342493-Disqover-3UG7TS7C";
   this.info = "info=1";
   this.ampersand = "&";
@@ -153,25 +171,27 @@ app.controller('disqoverController', ['$http', function($http){
   // this.movieResults;
   // this.searchURL = this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.ampersand + this.type
   //https://tastedive.com/api/similar?info=1&API-KEY-HERE&limit=5&q=UserInputHere&type=Category
-  this.getMusic = function(){
+  this.getMusic = function(music){
     $http({
       method: 'GET',
-      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
+      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
+      header: {"Access-Control-Allow-Origin": "*"}
     }).then(function(response){
-      this.music = response.data.Similar.Results
-      console.log(this.music[0]);
-      // console.log(this.music);
+
+      controller.music = response.data.Similar.Results
+      console.log(controller.music);
+
     }, function(error){
       console.log(error);
     })
   }
-  this.getMovies = function(){
+  this.getMovies = function(music){
     $http({
       method: 'GET',
       url: this.searchURL
     }).then(function(response){
-      this.movieResults = response.data.Similar.Results
-      console.log(this.movie);
+      controller.movie = response.data.Similar.Results
+      console.log(controller.movie);
     }, function(error){
       console.log(error);
     })

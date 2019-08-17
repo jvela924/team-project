@@ -23,6 +23,9 @@ const PROJECT3_DB = process.env.PROJECT3_DB;
 //============================
 //MIDDLEWARE
 //============================
+
+
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use(sessions({
@@ -40,6 +43,7 @@ const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 
 
+
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
 const disqoverController = require('./controllers/disqover.js');
 app.use('/disqover', disqoverController);
@@ -54,6 +58,10 @@ app.get('/disqover', (req, res) => {
     });
   }
 });
+
+app.get('/apikey', (req, res) => {
+  res.send(APIKEY)
+})
 
 //Connect to MongoDB
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});

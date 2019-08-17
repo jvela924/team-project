@@ -39,7 +39,12 @@
           </form>
       </div>
       <div ng-if="disq.loggedInUsername">
-        <form ng-submit="disq.createItem()">
+<button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
+      </div>
+
+      <div ng-if="disq.loggedInUsername">
+        <div ng-show="disq.state" >
+        <form ng-submit="disq.createItem()"  ng-hide="showme">
           <h1>Create your Disqover</h1>
           <h3>Name</h3>
           <input type="text" ng-model="disq.name">
@@ -53,9 +58,10 @@
           <input type="text" ng-model="disq.fav_artists">
           <h4>Favorite Movies</h4>
           <input type="text" ng-model="disq.fav_movies"><br>
-          <input type="submit" value="Create!">
+          <input type="submit" value="Create!" class="button">
         </form>
       </div>
+        </div>
     </nav>
       <div class="container">
         <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
@@ -87,20 +93,36 @@
             <input type="submit" value="Save Changes" class="buttontwo">
           </form>
         </div>
-        <div class="searchArea">
-          <form ng-submit="disq.getMusic()">
-            <input type="text" ng-model="disq.userInput">
-            <select ng-model="disq.category" name="category">
-              <option value="music">Music</option>
-              <option value="movies">Movies</option>
-            </select>
-            <input type="submit" value="Find Similar Results">
-          </form>
-          <div ng-repeat="music in disq.music">
-            <h2>{{music.Name}}</h2>
+        <div ng-if="disq.loggedInUsername" class="searchArea">
+          <div class="similar">
+            <form ng-submit="disq.getMusic()">
+
+              <h3>Search For </h3>
+              <select ng-model="disq.category" name="category">
+                <option value="music">Music</option>
+                <option value="movies">Movies</option>
+              </select>
+              <h3>Similar To</h3>
+              <input type="text" ng-model="disq.userInput">
+              <div>
+              <input type="submit" value="Find Similar Results" class="buttonthree">
+            </form>
           </div>
+          </div>
+
         </div>
+        <div ng-repeat="music in disq.music" class="results">
+      <div class="artist">
+        <h3>{{music.Name}}</h3>
+          <p> {{music.wTeaser}}</p>
+          <a href="{{music.wUrl}}">Wikipedia</a>
+          <a href="{{music.yUrl}}">Youtube
+
       </div>
+
+        </div>
+
+</div>
       <footer>
           Made By J.A.M.
       </footer>
