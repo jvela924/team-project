@@ -178,19 +178,27 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
-
-
+  this.getSpotify = function(){
+    $http({
+      method:"GET",
+      url: 'https://api.spotify.com/v1/search?q=track:antartica&type=track'
+    }).then(function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
+  }
   this.getItem();
 
 }]);
 //SPOTIFY Controller
-$( () => {
-  const spotifyCall = () => {
-    $.ajax({
-      method: "GET",
-      url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
-    }).done(function(data){
-      console.log(data);
-    })
-  }
-})
+// $( () => {
+//   const spotifyCall = () => {
+//     $.ajax({
+//       method: "GET",
+//       url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
+//     }).done(function(data){
+//       console.log(data);
+//     })
+//   }
+// })
