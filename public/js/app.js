@@ -1,10 +1,4 @@
-const app = angular.module('MyApp', []).config(function ($sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist([
-        'self',                    // trust all resources from the same origin
-        '*://www.youtube.com/embed**'   // trust all resources from `www.youtube.com`
-    ]);
-});
-
+const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   // fetch(process.env.APIKEY)
   // .then((response) => {
@@ -167,17 +161,6 @@ app.controller('disqoverController', ['$http', function($http){
       controller.music = response.data.Similar.Results
       console.log(controller.music);
 
-    }, function(error){
-      console.log(error);
-    })
-  }
-  this.getMovies = function(music){
-    $http({
-      method: 'GET',
-      url: this.searchURL
-    }).then(function(response){
-      controller.movieResults = response.data.Similar.Results
-      console.log(controller.movie);
     }, function(error){
       console.log(error);
     })
