@@ -168,7 +168,7 @@ app.controller('disqoverController', ['$http', function($http){
     $http({
       method: 'GET',
       url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
-      header: {"Access-Control-Allow-Origin": "*"}
+      header: {"Access-Control-Allow-Origin": "https://disqoverapplication.herokuapp.com/"}
     }).then(function(response){
 
       controller.music = response.data.Similar.Results
