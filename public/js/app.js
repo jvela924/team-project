@@ -141,7 +141,7 @@ app.controller('disqoverController', ['$http', function($http){
   this.music = [];
   this.userInput = '';
   this.category = '';
-  this.baseURL = "http://tastedive.com/api/similar?";
+  this.baseURL = "https://tastedive.com/api/similar?";
   this.apiKey = "k=" + "342493-Disqover-3UG7TS7C";
   this.info = "info=1";
   this.ampersand = "&";
