@@ -122,29 +122,7 @@ app.controller('disqoverController', ['$http', function($http){
     });
       }
 
-  this.spotifyCall = function(){
-    $http({
-      method: 'GET',
-      url: "/login"
-    }).then(function(response){
-      console.log(response.data);
-    }, function(error){
-      console.log(error);
-    })
-  }
-  // this.spotifyPost = function(){
-  //   $http({
-  //     method: 'POST',
-  //     url: "/spotify",
-  //     data: {
-  //       artist: this.artist
-  //     }
-  //   }).then(function(response){
-  //     console.log(response);
-  //     controller.artist = response.data
-  //     controller.spotifyCall();
-  //   })
-  // }
+
   this.apiKey = function(){
   $http({
     method: 'GET',
@@ -188,3 +166,46 @@ app.controller('disqoverController', ['$http', function($http){
   this.getItem();
 
 }]);
+//SPOTIFY Angular Controller
+app.controller('spotifyController', ['$http', function($http){
+  this.getSpotifyAPI = function(){
+    $http({
+      method: 'GET',
+      url: "/me"
+    }).then(function(response){
+      console.log(response.data);
+    }, function(error){
+      console.log(error);
+    })
+  }
+  this.postSpotifyAPI = function(){
+    $http({
+      method: 'POST',
+      url: "/me"
+    }).then(function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
+  }
+  this.updateSpotifyAPI = function(){
+    $http({
+      method: 'PUT',
+      url: "/me"
+    }).then(function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
+  }
+  this.deleteSpotifyAPI = function(){
+    $http({
+      method: 'DELETE',
+      url: "/me"
+    }).then(function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
+  }
+}])

@@ -75,10 +75,9 @@ app.get('/disqover', (req, res) => {
     });
   }
 });
-// // //CONNECT TO SPOTIFY SCOPE
-// app.get('/spotify', (req, res) => {
-//   res.send([spotify, spotifyApi]);
-// })
+//SPOTIFY Controller
+const spotifyController = require('./controllers/spotify.js');
+app.use('/spotify', spotifyController);
 
 app.get('/apikey', (req, res) => {
   res.send(APIKEY)
