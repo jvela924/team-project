@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <title></title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
   <script src="/js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
@@ -115,7 +119,7 @@
       </div>
       <!--BEGIN SPOTIFY REQUEST -->
       <div ng-controller="spotifyController as spotify">
-        <form ng-submit="spotify.getAlbum()">
+        <form action="spotifyCall()">
           <input type="submit" value="Get Album">
         </form>
       </div>

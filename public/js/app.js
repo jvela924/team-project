@@ -166,17 +166,14 @@ app.controller('disqoverController', ['$http', function($http){
   this.getItem();
 
 }]);
-//SPOTIFY Angular Controller
-
-  const controller = this;
-  this.getAlbum = function(){
-    $http({
-      method: 'GET',
-      url: "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy"
-    }).then(function(response){
-      controller.album = response.data
-      console.log(controller.album);
-    }, function(error){
-      console.log(error);
+//SPOTIFY Controller
+$( () => {
+  const spotifyCall = () => {
+    $.ajax({
+      method: "GET",
+      url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
+    }).done(function(data){
+      console.log(data);
     })
   }
+})
