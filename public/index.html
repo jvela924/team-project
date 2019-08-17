@@ -11,9 +11,11 @@
   <body ng-controller="disqoverController as disq">
     <header>
       <div class="vimeo-wrapper">
-   <iframe src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
-           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+        <iframe
+        src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
+        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
+      </div>
       <a href="/">Dis<span class="red">q</span>over</a>
     </header>
     <nav>
@@ -88,21 +90,30 @@
           </form>
         </div>
       </div>
-      <!-- <div class="spotify">
-      <script src="https://sdk.scdn.co/spotify-player.js"></script>
-      <script>
-      window.onSpotifyWebPlaybackSDKReady = () => {
-      const userAccessToken = "[access token]";
-      const webPlayback = new Spotify.Player({
-      name: "Spotify Web Playback SDK",
-      getOAuthToken: callback => { callback(token)}
-      });
-      webPlayback.connect();
-      };
-      </script>
-      </div> -->
-      <footer>
-          Made By J.A.M.
-      </footer>
+      <div class="searchArea">
+        <div class="similar">
+          <form ng-submit="disq.spotifyPost()">
+            <h3>Search For </h3>
+            <input type="text" ng-model="disq.artist">
+            <!-- <h3>Similar To</h3>
+            <input type="text" ng-model="disq.userInput"> -->
+            <div>
+              <input type="submit" value="Find Similar Results" class="buttonthree">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div ng-repeat="music in disq.music">
+        <ul>
+          <li>{{music.Name}}</li>
+          <li>{{music.wTeaser}}</li>
+          <li><a href="{{music.wUrl}}">Wikipedia</a></li>
+          <li><a href="{{music.yUrl}}">Youtube</li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+        Made By J.A.M.
+    </footer>
   </body>
 </html>

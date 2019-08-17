@@ -9,18 +9,21 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const port = 3000;
 const sessions = require('express-session');
 const db = mongoose.connection;
 require('dotenv').config();
 
-const PORT = process.env.PORT || port;
+const APIKEY = process.env.APIKEY;
+const PORT = process.env.PORT || 3000;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
 //============================
 //MIDDLEWARE
 //============================
+
+
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use(sessions({
@@ -36,8 +39,15 @@ const userController = require('./controllers/users.js');
 app.use('/users', userController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
+const spotifyController = require('./controllers/spotify.js');
+app.use('/spotify', spotifyController);
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 //MAIN SERVER ROUTE FOR USER LOGIN SESSION
 const disqoverController = require('./controllers/disqover.js');
 app.use('/disqover', disqoverController);
@@ -52,11 +62,15 @@ app.get('/disqover', (req, res) => {
     });
   }
 });
-// //CONNECT TO SPOTIFY SCOPE
-// app.get('/login', function(req, res) {
-// var scopes = 'user-read-private user-read-email';
-// res.redirect('https://accounts.spotify.com/authorize' + '?response_type=code' + '&client_id=' + my_client_id + (scopes ? '&scope=' + encodeURIComponent(scopes) : '') + '&redirect_uri=' + encodeURIComponent(redirect_uri));
-// });
+// // //CONNECT TO SPOTIFY SCOPE
+app.get('/spotify', (req, res) => {
+  res.send([spotify, spotifyApi]);
+})
+
+app.get('/apikey', (req, res) => {
+  res.send(APIKEY)
+})
+
 //Connect to MongoDB
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
@@ -76,6 +90,6 @@ mongoose.connection.once('open', () => {
   console.log('Connected to Mongoose');
 })
 //APP LISTENER
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('Listening...');
 })
