@@ -138,6 +138,19 @@ app.controller('disqoverController', ['$http', function($http){
   // What your searching for is called 'Q' . We are searching for similar results to 'Q'
   //This is for the most part how the URL will be built
   // this.movies = [];
+
+  this.apiKey = function(){
+  $http({
+    method: 'GET',
+    url: '/apikey'
+  }).then(function(response){
+    console.log(response);
+    controller.apiKey = "k=" + response.data
+    console.log(controller.apiKey);
+  });
+}
+
+  this.apiKey();
   this.music = [];
   this.userInput = '';
   this.category = '';
@@ -155,7 +168,8 @@ app.controller('disqoverController', ['$http', function($http){
   this.getMusic = function(music){
     $http({
       method: 'GET',
-      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category
+      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
+      header: {"Access-Control-Allow-Origin": "*"}
     }).then(function(response){
 
       controller.music = response.data.Similar.Results
