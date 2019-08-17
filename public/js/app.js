@@ -121,36 +121,30 @@ app.controller('disqoverController', ['$http', function($http){
       controller.getItem();
     });
       }
-  //Have a section inside the page where you see your individual collection items
-  //In this page, it will say something like "Find Similar" like a button with an input type (dropdown list)
-  //The dropdown list will have the options of movies or music
-  //Whatever you select turns into the type inside the search URL
-  // What your searching for is called 'Q' . We are searching for similar results to 'Q'
-  //This is for the most part how the URL will be built
-  // this.movies = [];
+
   this.spotifyCall = function(){
     $http({
       method: 'GET',
-      url: "/spotify"
+      url: "/login"
     }).then(function(response){
       console.log(response.data);
     }, function(error){
       console.log(error);
     })
   }
-  this.spotifyPost = function(){
-    $http({
-      method: 'POST',
-      url: "/spotify",
-      data: {
-        artist: this.artist
-      }
-    }).then(function(response){
-      console.log(response);
-      controller.artist = response.data
-      controller.spotifyCall();
-    })
-  }
+  // this.spotifyPost = function(){
+  //   $http({
+  //     method: 'POST',
+  //     url: "/spotify",
+  //     data: {
+  //       artist: this.artist
+  //     }
+  //   }).then(function(response){
+  //     console.log(response);
+  //     controller.artist = response.data
+  //     controller.spotifyCall();
+  //   })
+  // }
   this.apiKey = function(){
   $http({
     method: 'GET',
