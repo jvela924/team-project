@@ -1,16 +1,10 @@
 const app = angular.module('MyApp', [])
-
 app.controller('disqoverController', ['$http', function($http){
+  // fetch(process.env.APIKEY)
+  // .then((response) => {
+  //   apiKey = response;
+  // })
   const controller = this;
-
-      this.toggle = function () {
-        console.log("hello");
-        this.state = !this.state;
-      };
-
-
-
-
   this.indexOfEditFormToShow = null
 
   this.logOut = function(){
@@ -60,7 +54,17 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
-
+  //this callback might be used if we add a different route for user login
+  // this.goAuthorization = function(){
+  //     $http({
+  //         method:'GET',
+  //         url: '/app'
+  //     }).then(function(response){
+  //         controller.loggedInUsername = response.data.username; //change this
+  //     }, function(){
+  //         console.log('error');
+  //     });
+  // }
 
   this.deleteItem = function(disqover){
       $http({
@@ -127,14 +131,22 @@ app.controller('disqoverController', ['$http', function($http){
       controller.getItem();
     });
       }
-
+  //Have a section inside the page where you see your individual collection items
+  //In this page, it will say something like "Find Similar" like a button with an input type (dropdown list)
+  //The dropdown list will have the options of movies or music
+  //Whatever you select turns into the type inside the search URL
+  // What your searching for is called 'Q' . We are searching for similar results to 'Q'
+  //This is for the most part how the URL will be built
+  // this.movies = [];
 
   this.apiKey = function(){
   $http({
     method: 'GET',
     url: '/apikey'
   }).then(function(response){
+    console.log(response);
     controller.apiKey = "k=" + response.data
+    console.log(controller.apiKey);
   });
 }
 
@@ -166,39 +178,7 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-  this.getMovies = function(music){
-    $http({
-      method: 'GET',
-      url: this.searchURL
-    }).then(function(response){
-      controller.movie = response.data.Similar.Results
-      console.log(controller.movie);
-    }, function(error){
-      console.log(error);
-    })
-  }
 
-  this.getSpotify = function(){
-    $http({
-      method:"GET",
-      url: 'https://api.spotify.com/v1/search?q=track:antartica&type=track'
-    }).then(function(response){
-      console.log(response);
-    }, function(error){
-      console.log(error);
-    })
-  }
   this.getItem();
 
 }]);
-//SPOTIFY Controller
-// $( () => {
-//   const spotifyCall = () => {
-//     $.ajax({
-//       method: "GET",
-//       url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
-//     }).done(function(data){
-//       console.log(data);
-//     })
-//   }
-// })
