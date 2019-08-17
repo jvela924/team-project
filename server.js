@@ -62,6 +62,10 @@ app.get('/disqover', (req, res) => {
   }
 });
 
+app.get('/apikey', (req, res) => {
+  res.send(APIKEY)
+})
+
 //Connect to MongoDB
 mongoose.connect(PROJECT3_DB, {useNewUrlParser: true});
 
