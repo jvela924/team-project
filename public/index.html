@@ -88,28 +88,32 @@
           </form>
         </div>
         <div class="searchArea">
-          <form ng-submit="disq.getMusic()">
-            <input type="text" ng-model="disq.userInput">
-            <select ng-model="disq.category" name="category">
-              <option value="music">Music</option>
-              <option value="movies">Movies</option>
-            </select>
-            <input type="submit" value="Find Similar Results" class="buttonthree">
-          </form>
-          <div ng-repeat="music in disq.music">
-            <h2>{{music.Name}}</h2>
+          <div class="similar">
+            <form ng-submit="disq.getMusic()">
+
+              <h3>Search For </h3>
+              <select ng-model="disq.category" name="category">
+                <option value="music">Music</option>
+                <option value="movies">Movies</option>
+              </select>
+              <h3>Similar To</h3>
+              <input type="text" ng-model="disq.userInput">
+              <div>
+              <input type="submit" value="Find Similar Results" class="buttonthree">
+            </form>
           </div>
+          </div>
+
         </div>
         <div ng-repeat="music in disq.music">
         <ul>
           <li>{{music.Name}}</li>
           <li>{{music.wTeaser}}</li>
           <li><a href="{{music.wUrl}}">Wikipedia</a></li>
-        <iframe width="420" height="315"
-src="{{music.yUrl}}">
-</iframe>
+          <li><a href="{{music.yUrl}}">Youtube</li>
         </ul>
         </div>
+
 </div>
       <footer>
           Made By J.A.M.
