@@ -68,7 +68,12 @@
           </form>
       </div>
       <div ng-if="disq.loggedInUsername">
-        <form ng-submit="disq.createItem()">
+<button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
+      </div>
+
+      <div ng-if="disq.loggedInUsername">
+        <div ng-show="disq.state" >
+        <form ng-submit="disq.createItem()"  ng-hide="showme">
           <h1>Create your Disqover</h1>
           <h3>Name</h3>
           <input type="text" ng-model="disq.name">
@@ -82,9 +87,10 @@
           <input type="text" ng-model="disq.fav_artists">
           <h4>Favorite Movies</h4>
           <input type="text" ng-model="disq.fav_movies"><br>
-          <input type="submit" value="Create!">
+          <input type="submit" value="Create!" class="button">
         </form>
       </div>
+        </div>
     </nav>
       <div class="container">
         <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
@@ -118,9 +124,9 @@
         </div>
       </div>
       <!--BEGIN SPOTIFY REQUEST -->
-      <div ng-controller="spotifyController as spotify">
+      <div>
         <form action="spotifyCall()">
-          <input type="submit" value="Get Album">
+          <input type="submit" value="Get Results">
         </form>
       </div>
       <!-- END SPOTIFY REQUEST -->
