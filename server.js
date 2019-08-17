@@ -9,14 +9,13 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const port = 3000;
 const sessions = require('express-session');
 const db = mongoose.connection;
 require('dotenv').config();
 
 const APIKEY = process.env.APIKEY;
 module.exports = APIKEY;
-const PORT = process.env.PORT || port;
+const PORT = process.env.PORT || 3000;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
@@ -82,6 +81,6 @@ mongoose.connection.once('open', () => {
   console.log('Connected to Mongoose');
 })
 //APP LISTENER
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('Listening...');
 })
