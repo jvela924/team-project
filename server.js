@@ -15,7 +15,7 @@ require('dotenv').config();
 
 const APIKEY = process.env.APIKEY;
 module.exports = APIKEY;
-const PORT = process.env.PORT || port;
+const PORT = process.env.PORT || 3000;
 
 //database variable for heroku connection
 const PROJECT3_DB = process.env.PROJECT3_DB;
