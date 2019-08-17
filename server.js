@@ -9,7 +9,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const port = 3000;
 const sessions = require('express-session');
 const db = mongoose.connection;
 require('dotenv').config();
@@ -77,6 +76,6 @@ mongoose.connection.once('open', () => {
   console.log('Connected to Mongoose');
 })
 //APP LISTENER
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('Listening...');
 })
