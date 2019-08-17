@@ -113,6 +113,13 @@
           </form>
         </div>
       </div>
+      <!--BEGIN SPOTIFY REQUEST -->
+      <div ng-controller="spotifyController as spotify">
+        <form ng-submit="spotify.getAlbum()">
+          <input type="submit" value="Get Album">
+        </form>
+      </div>
+      <!-- END SPOTIFY REQUEST -->
       <div class="searchArea">
         <div class="similar">
           <form ng-submit="disq.spotifyPost()">

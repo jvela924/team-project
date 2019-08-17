@@ -167,45 +167,16 @@ app.controller('disqoverController', ['$http', function($http){
 
 }]);
 //SPOTIFY Angular Controller
-app.controller('spotifyController', ['$http', function($http){
-  this.getSpotifyAPI = function(){
+
+  const controller = this;
+  this.getAlbum = function(){
     $http({
       method: 'GET',
-      url: "/me"
+      url: "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy"
     }).then(function(response){
-      console.log(response.data);
+      controller.album = response.data
+      console.log(controller.album);
     }, function(error){
       console.log(error);
     })
   }
-  this.postSpotifyAPI = function(){
-    $http({
-      method: 'POST',
-      url: "/me"
-    }).then(function(response){
-      console.log(response);
-    }, function(error){
-      console.log(error);
-    })
-  }
-  this.updateSpotifyAPI = function(){
-    $http({
-      method: 'PUT',
-      url: "/me"
-    }).then(function(response){
-      console.log(response);
-    }, function(error){
-      console.log(error);
-    })
-  }
-  this.deleteSpotifyAPI = function(){
-    $http({
-      method: 'DELETE',
-      url: "/me"
-    }).then(function(response){
-      console.log(response);
-    }, function(error){
-      console.log(error);
-    })
-  }
-}])
