@@ -1,16 +1,16 @@
-
 const app = angular.module('MyApp', [])
 
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
 
+  this.like = function () {
+    console.log("hello");
+  };
+
       this.toggle = function () {
         console.log("hello");
         this.state = !this.state;
       };
-
-
-
 
   this.indexOfEditFormToShow = null
 
@@ -61,17 +61,7 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
-  //this callback might be used if we add a different route for user login
-  // this.goAuthorization = function(){
-  //     $http({
-  //         method:'GET',
-  //         url: '/app'
-  //     }).then(function(response){
-  //         controller.loggedInUsername = response.data.username; //change this
-  //     }, function(){
-  //         console.log('error');
-  //     });
-  // }
+
 
   this.deleteItem = function(disqover){
       $http({
@@ -138,22 +128,14 @@ app.controller('disqoverController', ['$http', function($http){
       controller.getItem();
     });
       }
-  //Have a section inside the page where you see your individual collection items
-  //In this page, it will say something like "Find Similar" like a button with an input type (dropdown list)
-  //The dropdown list will have the options of movies or music
-  //Whatever you select turns into the type inside the search URL
-  // What your searching for is called 'Q' . We are searching for similar results to 'Q'
-  //This is for the most part how the URL will be built
-  // this.movies = [];
+
 
   this.apiKey = function(){
   $http({
     method: 'GET',
     url: '/apikey'
   }).then(function(response){
-    console.log(response);
     controller.apiKey = "k=" + response.data
-    console.log(controller.apiKey);
   });
 }
 
@@ -162,7 +144,6 @@ app.controller('disqoverController', ['$http', function($http){
   this.userInput = '';
   this.category = '';
   this.baseURL = "https://tastedive.com/api/similar?";
-  this.apiKey = "k=" + "342493-Disqover-3UG7TS7C";
   this.info = "info=1";
   this.ampersand = "&";
   this.limit = "limit=5";
@@ -176,7 +157,7 @@ app.controller('disqoverController', ['$http', function($http){
     $http({
       method: 'GET',
       url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
-      header: {"Access-Control-Allow-Origin": "*"}
+      header: {"Access-Control-Allow-Origin": "https://tastedive.com"}
     }).then(function(response){
 
       controller.music = response.data.Similar.Results
@@ -197,6 +178,8 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
+
+
 
   this.getItem();
 
