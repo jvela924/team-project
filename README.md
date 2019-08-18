@@ -1,4 +1,28 @@
-# team-project
+# Disqover
+**Disqover** is a social networking site where users can discover others who share similar music and movie tastes, as well as a portal to discovering new music and movies.
+
+### Live Site
+[Disqover](https://disqoverapplication.herokuapp.com/)
+
+### User Stories
+* User can create their disqover which includes their profile name, an image, age, bio, favorite artists, and favorite movies.
+* Users can edit and delete their disqover.
+* Users can view and search through all disqovers.
+* Users can search for similar music and/or movies, based on their specified search criteria.
+  * Users can like a similar result and view all of their likes.
+  
+### Technologies Used
+#### Node.js
+Node.js is an event driven, lock-free javascript runtime. It handles multiple events concurrently, and fires callbacks upon each connection.
+
+#### Express
+Express is a web framework for Node.js.
+
+#### Angular
+Angular is a structural framework for developing dynamic single-page applications in HTML, CSS, and JavaScript
+
+#### Mongoose
+Mongoose is a schema based framework for modeling application data. It connects to MongoDb, and has built-in type-casting and validation.
 
 
 ======================================================================
