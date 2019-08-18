@@ -64,6 +64,12 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
 
+  this.wobble = function () {
+    console.log("hello");
+    this.hype = !this.hype;
+  };
+
+
   this.toggle = function () {
     console.log("hello");
     this.state = !this.state;
