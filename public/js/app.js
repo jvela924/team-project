@@ -3,13 +3,14 @@ const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
 
+  this.like = function () {
+    console.log("hello");
+  };
+
       this.toggle = function () {
         console.log("hello");
         this.state = !this.state;
       };
-
-
-
 
   this.indexOfEditFormToShow = null
 
@@ -176,6 +177,7 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
+
   this.getItem();
 
 }]);
