@@ -2,10 +2,28 @@ const app = angular.module('MyApp', [])
 
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
+  this.likes = []
+  this.like = function (music) {
+    $http({
+      method: 'GET',
+      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
+      header: {"Access-Control-Allow-Origin": "https://tastedive.com"}
+    }).then(function(response){
+      // click something and get back specific result
+      console.log(controller.loggedInUsername);
+      console.log(music);
+      controller.likes.push(music)
+      console.log(controller.likes);
 
-  this.like = function () {
-    console.log("hello");
-  };
+
+
+      // Push that information to an array
+
+
+    }, function(error){
+      console.log(error);
+    })
+  }
 
       this.toggle = function () {
         console.log("hello");
