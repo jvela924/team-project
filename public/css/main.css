@@ -14,6 +14,10 @@ header{
   padding: 25px;
 
 }
+
+ul,li{
+  list-style: none;
+}
 header:hover{
   text-align: center;
   font-size: 100px;
@@ -49,20 +53,22 @@ a{
 a:hover{
   text-decoration: none;
   color: grey;
+
 }
 
 footer {
 font-size: 20px;
 position: fixed;
-height: 75px;
+height: 80px;
 bottom: 0;
 width: 100%;
-padding-top:10px;
-padding-bottom:10px;
-background-color: black;
-color: red;
+padding-top:40px;
+  background-image: url("https://ctl.s6img.com/society6/img/4FgqAkWQm-IISwbS2QYL5WWPUv4/w_1500/comforters/swatch/~artwork,fw_6000,fh_6000,iw_6000,ih_6000/s6-original-art-uploads/society6/uploads/misc/014c5b191ed94393bd365d111f545cff/~~/lightning-bolt-pattern-black-white-comforters.jpg");
+
+color: White;
 font-family: 'Quicksand', sans-serif;
 text-align: center;
+    border: 10px solid white;
 }
 textarea{
     height: 100px;
@@ -93,6 +99,18 @@ button{
   color: red;
 }
 
+.searchArea{
+  margin-top: 100px;
+  width: 100%;
+  height: 100%;
+padding: 40px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+  text-align:center;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
 
 .create{
   margin: 20px;
@@ -106,6 +124,39 @@ button{
   justify-content: center;
 }
 
+.results {
+  display: flex;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+.artist{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 350px;
+  min-height: 800px;
+  background-color:rgba(255,255,255, 0.8);
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  -moz-box-shadow:    3px 3px 5px 6px #000;
+  -webkit-box-shadow: 3px 3px 5px 6px #000;
+   box-shadow:        3px 3px 5px 6px #000;
+}
+
+.artist:hover{
+  background-color:rgba(255,255,255, 1);
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+
+}
+
+.link{
+  color: red;
+    text-shadow: none;
+}
 
 .button{
       width: 200px;
@@ -149,6 +200,49 @@ button{
       transition: all 0.3s;
 }
 
+.buttonthree{
+      width: 300px;
+      border: 3px solid black;
+      font-family: 'Quicksand', sans-serif;
+      color: inherit;
+      background: none;
+      cursor: pointer;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 15px;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+}
+
+.buttonfour{
+      width: 300px;
+      border: 3px solid black;
+      font-family: 'Quicksand', sans-serif;
+      color: black;
+      background: none;
+      cursor: pointer;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 30px;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+}
+.similar{
+  display: flex;
+  flex-direction: column;
+}
 
 
 .container {
@@ -166,6 +260,7 @@ button{
   flex-direction: column;
   text-align: center;
   width: 400px;
+  padding: 20px;
   min-height: 800px;
   font-family: 'Quicksand', sans-serif;
   margin: 50px;

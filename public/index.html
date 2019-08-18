@@ -14,11 +14,16 @@
     <header>
       <div class="vimeo-wrapper">
         <iframe
+<<<<<<< HEAD
         src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
         frameborder="0"
         webkitallowfullscreen
         mozallowfullscreen
         allowfullscreen>
+=======
+          src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
+          frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+>>>>>>> 926054183bc8de98afe5b6e17b922510281455b2
         </iframe>
       </div>
       <a href="/">Dis<span class="red">q</span>over</a>
@@ -28,85 +33,120 @@
         <div ng-if="disq.loggedInUsername">
           <h1>Welcome, {{disq.loggedInUsername}}</h1>
         </div>
-          <div ng-if="!disq.loggedInUsername">
-        <h2>Log In or Sign Up</h2>
-        <input type="text" ng-model="disq.username" placeholder="Username" />
-        <input type="password" ng-model="disq.password" placeholder="Password"/>
-        <form ng-submit="disq.createUser()">
-          <input class="button" type="submit" value="Create User">
-        </form>
-        <form ng-submit="disq.logIn()">
-            <input class="button" type="submit" value="Log In">
-        </form>
-      </div>
-        <div class="logout">
-      <div ng-if="disq.loggedInUsername">
-          <form ng-submit="disq.logOut()">
-          <input class="button" type="submit" value="Logout"/>
+        <div ng-if="!disq.loggedInUsername">
+          <h2>Log In or Sign Up</h2>
+          <input type="text" ng-model="disq.username" placeholder="Username" />
+          <input type="password" ng-model="disq.password" placeholder="Password"/>
+          <form ng-submit="disq.createUser()">
+            <input class="button" type="submit" value="Create User">
           </form>
-      </div>
-      <div ng-if="disq.loggedInUsername">
-        <form ng-submit="disq.createItem()">
-          <h1>Create your Disqover</h1>
-          <h3>Name</h3>
-          <input type="text" ng-model="disq.name">
-          <h3>Picture</h3>
-          <input type="text" ng-model="disq.image">
-          <h3>Age</h3>
-          <input type="number" ng-model="disq.age">
-          <h3>Bio</h3>
-          <textarea ng-model="disq.bio" rows="8" cols="80">Enter your bio</textarea>
-          <h4>Favorite Artists</h4>
-          <input type="text" ng-model="disq.fav_artists">
-          <h4>Favorite Movies</h4>
-          <input type="text" ng-model="disq.fav_movies"><br>
-          <input type="submit" value="Create!">
-        </form>
-      </div>
-    </nav>
-      <div class="container">
-        <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
-          <h2>{{page.name}}</h2>
-          <img ng-src="{{page.image}}" alt="{{page.name}}">
-          <h3>{{page.age}}</h3>
-          <h4>{{page.bio}}</h4>
-          <div ng-repeat="artist in page.fav_artists">
-            <h4>{{artist}}</h4>
-          </div>
-          <div ng-repeat="movie in page.fav_movies">
-            <h4>{{movie}}</h4>
-          </div>
-          <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
-          <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
-          <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
-            <h3>Name</h3>
-            <input type="text" ng-model="disq.updatedName">
-            <h3>Picture</h3>
-            <input type="text" ng-model="disq.updatedImage">
-            <h3>Age</h3>
-            <input type="number" ng-model="disq.updatedAge">
-            <h3>Bio</h3>
-            <textarea ng-model="disq.updatedBio" rows="8" cols="80">Enter your bio</textarea>
-            <h4>Favorite Artists</h4>
-            <input type="text" ng-model="disq.updatedFav_artists">
-            <h4>Favorite Movies</h4>
-            <input type="text" ng-model="disq.updatedFav_movies"><br>
-            <input type="submit" value="Save Changes" class="buttontwo">
+          <form ng-submit="disq.logIn()">
+              <input class="button" type="submit" value="Log In">
           </form>
         </div>
-        <div class="searchArea">
+        <div class="logout">
+          <div ng-if="disq.loggedInUsername">
+              <form ng-submit="disq.logOut()">
+                <input class="button" type="submit" value="Logout"/>
+              </form>
+          </div>
+        </div>
+        <div ng-if="disq.loggedInUsername">
+          <button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
+        </div>
+        <div ng-if="disq.loggedInUsername">
+          <div ng-show="disq.state" >
+            <form ng-submit="disq.createItem()"  ng-hide="showme">
+              <h1>Create your Disqover</h1>
+              <h3>Name</h3>
+              <input type="text" ng-model="disq.name">
+              <h3>Picture</h3>
+              <input type="text" ng-model="disq.image">
+              <h3>Age</h3>
+              <input type="number" ng-model="disq.age">
+              <h3>Bio</h3>
+              <textarea ng-model="disq.bio" rows="8" cols="80">Enter your bio</textarea>
+              <h4>Favorite Artists</h4>
+              <input type="text" ng-model="disq.fav_artists">
+              <h4>Favorite Movies</h4>
+              <input type="text" ng-model="disq.fav_movies"><br>
+              <input type="submit" value="Create!" class="button">
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <h1>Likes</h1>
+      <div ng-if="like[1].username === loggedInUsername">
+        <div ng-repeat="like in disq.likes" class="results">
+          <div class="artist">
+          <h3>{{like.Name}}</h3>
+            <p> {{like.wTeaser}}</p>
+            <a href="{{like.wUrl}}" class="link">Wikipedia</a>
+            <a href="{{like.yUrl}}" class="link">Youtube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
+        <h2>{{page.name}}</h2>
+        <img ng-src="{{page.image}}" alt="{{page.name}}">
+        <h3>{{page.age}}</h3>
+        <h4>{{page.bio}}</h4>
+        <div ng-repeat="artist in page.fav_artists">
+          <h4>{{artist}}</h4>
+        </div>
+        <div ng-repeat="movie in page.fav_movies">
+          <h4>{{movie}}</h4>
+        </div>
+        <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
+        <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
+        <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
+          <h3>Name</h3>
+          <input type="text" ng-model="disq.updatedName">
+          <h3>Picture</h3>
+          <input type="text" ng-model="disq.updatedImage">
+          <h3>Age</h3>
+          <input type="number" ng-model="disq.updatedAge">
+          <h3>Bio</h3>
+          <textarea ng-model="disq.updatedBio" rows="8" cols="80">Enter your bio</textarea>
+          <h4>Favorite Artists</h4>
+          <input type="text" ng-model="disq.updatedFav_artists">
+          <h4>Favorite Movies</h4>
+          <input type="text" ng-model="disq.updatedFav_movies"><br>
+          <input type="submit" value="Save Changes" class="buttontwo">
+        </form>
+      </div>
+      <div ng-if="disq.loggedInUsername" class="searchArea">
+        <div class="similar">
           <form ng-submit="disq.getMusic()">
-            <input type="text" ng-model="disq.userInput">
+            <h3>Search For </h3>
             <select ng-model="disq.category" name="category">
               <option value="music">Music</option>
               <option value="movies">Movies</option>
             </select>
-            <input type="submit" value="Find Similar Results">
+            <h3>Similar To</h3>
+            <input type="text" ng-model="disq.userInput">
+            <div>
+              <input type="submit" value="Find Similar Results" class="buttonthree">
+            </div>
           </form>
         </div>
       </div>
-      <footer>
-          Made By J.A.M.
-      </footer>
+    </div>
+    <div ng-repeat="music in disq.music" class="results">
+      <div class="artist">
+        <h3>{{music.Name}}</h3>
+        <p> {{music.wTeaser}}</p>
+        <a href="{{music.wUrl}}" class="link">Wikipedia</a>
+        <a href="{{music.yUrl}}" class="link">Youtube</a>
+        <button ng-click="disq.like(music, loggedInUsername)" class="buttonfour">Like </button>
+      </div>
+    </div>
+    <footer>
+        Made By J.A.M.
+    </footer>
   </body>
 </html>
