@@ -19,5 +19,27 @@ registerUser.post('/', (req, res) => {
   });
 });
 
+registerUser.put('/:id', (req,res) => {
+  User.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedUser) => {
+    { $push: { likes: req.body.likes} }
+    res.json(updatedUser)
+  })
+})
+
+registerUser.get('/', (req,res) => {
+
+  User.find({}, (err, foundUsers) => {
+    currentUser = req.body.username
+
+    res.json(foundUsers)
+  })
+})
+
+registerUser.get('/:id', (req,res) => {
+  User.findById(req.params.id, (err,foundUser) => {
+    res.json(foundUser)
+  })
+})
+
 //Export registerUser
 module.exports = registerUser;

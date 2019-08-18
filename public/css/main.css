@@ -134,15 +134,15 @@ padding: 40px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 300px;
-    min-height: 800px;
-    background-color:rgba(255,255,255, 0.8);
-    text-align: center;
-    margin: 20px;
-    padding: 20px;
-    -moz-box-shadow:    3px 3px 5px 6px #000;
-    -webkit-box-shadow: 3px 3px 5px 6px #000;
-     box-shadow:         3px 3px 5px 6px #000;
+  width: 350px;
+  min-height: 800px;
+  background-color:rgba(255,255,255, 0.8);
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  -moz-box-shadow:    3px 3px 5px 6px #000;
+  -webkit-box-shadow: 3px 3px 5px 6px #000;
+   box-shadow:        3px 3px 5px 6px #000;
 }
 
 .artist:hover{
@@ -151,6 +151,11 @@ padding: 40px;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow:         inset 0 0 10px #000000;
 
+}
+
+.link{
+  color: red;
+    text-shadow: none;
 }
 
 .button{
@@ -215,6 +220,25 @@ padding: 40px;
       transition: all 0.3s;
 }
 
+.buttonfour{
+      width: 300px;
+      border: 3px solid black;
+      font-family: 'Quicksand', sans-serif;
+      color: black;
+      background: none;
+      cursor: pointer;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 30px;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+}
 .similar{
   display: flex;
   flex-direction: column;
@@ -236,6 +260,7 @@ padding: 40px;
   flex-direction: column;
   text-align: center;
   width: 400px;
+  padding: 20px;
   min-height: 800px;
   font-family: 'Quicksand', sans-serif;
   margin: 50px;

@@ -2,14 +2,72 @@ const app = angular.module('MyApp', [])
 
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
+  this.likes = []
 
-      this.toggle = function () {
-        console.log("hello");
-        this.state = !this.state;
-      };
+  // this.getUser = function(){
+  //   $http({
+  //     method:'GET',
+  //     url: '/users'
+  //   }).then(function(response){
+  //     controller.users = response.data
+  //     console.log(controller.users);
+  //     console.log(response);
+  //   }, function(error){
+  //     console.log(error);
+  //   })
+  // }
+  //
+  // this.getUser()
 
 
+  this.addLikes = function () {
+    $http({
+     method:'PUT',
+     url: '/users/' + controller.userId,
+     data:{
+       likes: this.likes}
+     }).then(function(response){
+       console.log(controller.likes);
 
+     }, function(error){
+       console.log(error);
+     })
+   }
+
+   this.getLikes = function() {
+     $http({
+       method:"GET",
+       url: '/users/' + controller.userId,
+     }).then(function(response){
+       controller.likes = response.data.likes;
+       console.log(controller.likes);
+     })
+   }
+
+  this.like = function (music) {
+    $http({
+      method: 'GET',
+      url: this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.userInput + this.ampersand + this.type + this.category,
+      header: {"Access-Control-Allow-Origin": "https://tastedive.com"}
+    }).then(function(response){
+      // click something and get back specific result
+      // console.log(controller.loggedInUsername);
+      // console.log(music);
+      controller.likes.push(music)
+      console.log(controller.likes);
+      // console.log(controller.likes);
+      controller.addLikes()
+      // Push that information to an array
+
+    }, function(error){
+      console.log(error);
+    })
+  }
+
+  this.toggle = function () {
+    console.log("hello");
+    this.state = !this.state;
+  };
 
   this.indexOfEditFormToShow = null
 
@@ -55,6 +113,8 @@ app.controller('disqoverController', ['$http', function($http){
         controller.credentials = null;
         controller.loggedInUsername = response.data.userData.username
         // controller.goAuthorization(); //add this
+        controller.userId = response.data.userData._id
+        controller.getLikes()
     }, function(error){
         console.log(error);
     })
@@ -176,6 +236,7 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
+
   this.getItem();
 
 }]);
