@@ -23,6 +23,7 @@ userSession.post('/', (req, res) => {
   User.findOne({username: req.body.username}, (error, foundUser) => {
     if(bcrypt.compareSync(req.body.password, foundUser.password)){
       req.session.currentUser = foundUser;
+      console.log(foundUser);
       res.status(201).json({
         status: 201,
         message: 'User Session Created',

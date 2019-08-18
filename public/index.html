@@ -67,18 +67,14 @@
       </div>
     </nav>
     <div>
-      <div class="likes">
-
-
-        <div ng-if="like[1].username === loggedInUsername">
-            <h1>Likes</h1>
-          <div ng-repeat="like in disq.likes" class="results">
-            <div class="artist">
-            <h3>{{like.Name}}</h3>
-              <p> {{like.wTeaser}}</p>
-              <a href="{{like.wUrl}}" class="link">Wikipedia</a>
-              <a href="{{like.yUrl}}" class="link">Youtube</a>
-            </div>
+      <h1>Likes</h1>
+      <div>
+        <div ng-repeat="like in disq.likes" class="results">
+          <div class="artist">
+          <h3>{{like.Name}}</h3>
+            <p> {{like.wTeaser}}</p>
+            <a href="{{like.wUrl}}" class="link">Wikipedia</a>
+            <a href="{{like.yUrl}}" class="link">Youtube</a>
           </div>
         </div>
       </div>

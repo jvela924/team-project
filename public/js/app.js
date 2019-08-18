@@ -18,20 +18,31 @@ app.controller('disqoverController', ['$http', function($http){
   // }
   //
   // this.getUser()
-  //
-  // this.editUser = function (user) {
-  //   $http({
-  //    method:'PUT',
-  //    url: '/users/' + user._id,
-  //    data:{
-  //      likes: this.likes}
-  //    }).then(function(response){
-  //      console.log(controller.likes);
-  //
-  //    }, function(error){
-  //      console.log(error);
-  //    })
-  //  }
+
+
+  this.addLikes = function () {
+    $http({
+     method:'PUT',
+     url: '/users/' + controller.userId,
+     data:{
+       likes: this.likes}
+     }).then(function(response){
+       console.log(controller.likes);
+
+     }, function(error){
+       console.log(error);
+     })
+   }
+
+   this.getLikes = function() {
+     $http({
+       method:"GET",
+       url: '/users/' + controller.userId,
+     }).then(function(response){
+       controller.likes = response.data.likes;
+       console.log(controller.likes);
+     })
+   }
 
   this.like = function (music) {
     $http({
@@ -45,22 +56,18 @@ app.controller('disqoverController', ['$http', function($http){
       controller.likes.push(music)
       console.log(controller.likes);
       // console.log(controller.likes);
-      // controller.editUser(user)
-
-
-
+      controller.addLikes()
       // Push that information to an array
-
 
     }, function(error){
       console.log(error);
     })
   }
 
-      this.toggle = function () {
-        console.log("hello");
-        this.state = !this.state;
-      };
+  this.toggle = function () {
+    console.log("hello");
+    this.state = !this.state;
+  };
 
   this.indexOfEditFormToShow = null
 
@@ -107,6 +114,7 @@ app.controller('disqoverController', ['$http', function($http){
         controller.loggedInUsername = response.data.userData.username
         // controller.goAuthorization(); //add this
         controller.userId = response.data.userData._id
+        controller.getLikes()
     }, function(error){
         console.log(error);
     })
