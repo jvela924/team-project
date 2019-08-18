@@ -19,5 +19,13 @@ registerUser.post('/', (req, res) => {
   });
 });
 
+registerUser.get('/', (req,res) => {
+
+  User.find({}, (err, foundUsers) => {
+
+    res.json(foundUsers)
+  })
+})
+
 //Export registerUser
 module.exports = registerUser;

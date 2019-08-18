@@ -3,6 +3,36 @@ const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = []
+
+  // this.getUser = function(){
+  //   $http({
+  //     method:'GET',
+  //     url: '/users'
+  //   }).then(function(response){
+  //     controller.users = response.data
+  //     console.log(controller.users);
+  //     console.log(response);
+  //   }, function(error){
+  //     console.log(error);
+  //   })
+  // }
+  //
+  // this.getUser()
+  //
+  // this.editUser = function (user) {
+  //   $http({
+  //    method:'PUT',
+  //    url: '/users/' + user._id,
+  //    data:{
+  //      likes: this.likes}
+  //    }).then(function(response){
+  //      console.log(controller.likes);
+  //
+  //    }, function(error){
+  //      console.log(error);
+  //    })
+  //  }
+
   this.like = function (music) {
     $http({
       method: 'GET',
@@ -10,10 +40,12 @@ app.controller('disqoverController', ['$http', function($http){
       header: {"Access-Control-Allow-Origin": "https://tastedive.com"}
     }).then(function(response){
       // click something and get back specific result
-      console.log(controller.loggedInUsername);
-      console.log(music);
+      // console.log(controller.loggedInUsername);
+      // console.log(music);
       controller.likes.push(music)
       console.log(controller.likes);
+      // console.log(controller.likes);
+      // controller.editUser(user)
 
 
 
@@ -74,6 +106,7 @@ app.controller('disqoverController', ['$http', function($http){
         controller.credentials = null;
         controller.loggedInUsername = response.data.userData.username
         // controller.goAuthorization(); //add this
+        controller.userId = response.data.userData._id
     }, function(error){
         console.log(error);
     })

@@ -10,7 +10,7 @@ const userSchema = Schema({
   username: String,
   password: String,
   access_token: String,
-  likes: [String]
+  likes: Array
 });
 
 const User = mongoose.model('User', userSchema);
