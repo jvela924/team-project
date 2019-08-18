@@ -42,6 +42,7 @@
 <button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
       </div>
 
+
       <div ng-if="disq.loggedInUsername">
         <div ng-show="disq.state" >
         <form ng-submit="disq.createItem()"  ng-hide="showme">
@@ -63,6 +64,19 @@
       </div>
         </div>
     </nav>
+    <div>
+      <h1>Likes</h1>
+      <div ng-if="like[1].username === loggedInUsername">
+        <div ng-repeat="like in disq.likes" class="results">
+          <div class="artist">
+          <h3>{{like.Name}}</h3>
+            <p> {{like.wTeaser}}</p>
+            <a href="{{like.wUrl}}" class="link">Wikipedia</a>
+            <a href="{{like.yUrl}}" class="link">Youtube</a>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="container">
         <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
           <h2>{{page.name}}</h2>
@@ -117,7 +131,7 @@
           <p> {{music.wTeaser}}</p>
           <a href="{{music.wUrl}}" class="link">Wikipedia</a>
           <a href="{{music.yUrl}}" class="link">Youtube</a>
-        <button ng-click="disq.like()" class="buttonfour">Like </button>
+        <button ng-click="disq.like(music)" class="buttonfour">Like </button>
 
 
       </div>
