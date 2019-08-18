@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const sessions = require('express-session');
+const User = require('./models/users.js');
 //=================================================================
 //Below frameworks and npm packages are for spotify web api mostly
 //=================================================================
@@ -71,9 +72,9 @@ app.get('/disqover', (req, res) => {
     });
   }
 });
-//SPOTIFY Controller
-const spotifyController = require('./controllers/spotify.js');
-app.use('/spotify', spotifyController);
+// //SPOTIFY Controller
+// const spotifyController = require('./controllers/spotify.js');
+// app.use('/spotify', spotifyController);
 
 app.get('/apikey', (req, res) => {
   res.send(APIKEY)
@@ -173,6 +174,9 @@ app.get('/callback', (req, res) => {
       if (!error && response.statusCode === 200) {
         var access_token = body.access_token,
         refresh_token = body.refresh_token;
+        if(req.session.currentUser){
+          User.findByIdAndUpdate(req.session.currentUser._id, {acess_token: access_token})
+        }
         var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: { 'Authorization': 'Bearer' + access_token },
@@ -195,7 +199,6 @@ app.get('/callback', (req, res) => {
     });
   }
 });
-
 app.get('/refresh_token', (req, res) => {
   //requesting access token from refresh token
   var refresh_token = req.query.refresh_token;

@@ -166,18 +166,6 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-  this.getMovies = function(music){
-    $http({
-      method: 'GET',
-      url: this.searchURL
-    }).then(function(response){
-      controller.movie = response.data.Similar.Results
-      console.log(controller.movie);
-    }, function(error){
-      console.log(error);
-    })
-  }
-
   this.getSpotify = function(){
     $http({
       method:"GET",
