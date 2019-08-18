@@ -4,10 +4,6 @@
   <meta charset="utf-8">
   <title></title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
   <script src="/js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
@@ -15,40 +11,15 @@
   <body ng-controller="disqoverController as disq">
     <header>
       <div class="vimeo-wrapper">
-        <iframe
-        src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
-        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-        </iframe>
-      </div>
+   <iframe src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
+           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
       <a href="/">Dis<span class="red">q</span>over</a>
     </header>
     <nav>
       <div class="create">
         <div ng-if="disq.loggedInUsername">
           <h1>Welcome, {{disq.loggedInUsername}}</h1>
-          <!--SPOTIFY LOGIN AREA -->
-          <div class="spotifyArea">
-            <div id="spotifyLogin">
-              <h1>Log in to Spotify</h1>
-              <a href="/login"><button id="spotLoginBtn">Log In</button></a>
-            </div>
-            <div id="spotLoggedIn">
-            </div>
-          </div>
-          <script id="loggedin-template" type="text/x-handlebars-template">
-            <h1>Logged in as </h1>
-            <img id="avatar" width="200" src="" />
-            <dl>
-              <dt>Display name</dt><dd></dd>
-              <dt>Username</dt><dd></dd>
-              <dt>Email</dt><dd></dd>
-              <dt>Spotify URI</dt><dd><a href=""></a></dd>
-              <dt>Link</d><dd><a href=""></a></dd>
-              <dt>Profile Image</dt><dd></dd>
-            </dl>
-            <p><a href="/"><button>Log in again</button></a></p>
-          </script>
-          <!-- END SPOTIFY LOGIN AREA -->
         </div>
           <div ng-if="!disq.loggedInUsername">
         <h2>Log In or Sign Up</h2>
@@ -68,12 +39,7 @@
           </form>
       </div>
       <div ng-if="disq.loggedInUsername">
-        <button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
-      </div>
-
-      <div ng-if="disq.loggedInUsername">
-        <div ng-show="disq.state" >
-        <form ng-submit="disq.createItem()"  ng-hide="showme">
+        <form ng-submit="disq.createItem()">
           <h1>Create your Disqover</h1>
           <h3>Name</h3>
           <input type="text" ng-model="disq.name">
@@ -87,10 +53,9 @@
           <input type="text" ng-model="disq.fav_artists">
           <h4>Favorite Movies</h4>
           <input type="text" ng-model="disq.fav_movies"><br>
-          <input type="submit" value="Create!" class="button">
+          <input type="submit" value="Create!">
         </form>
       </div>
-        </div>
     </nav>
       <div class="container">
         <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
@@ -122,38 +87,36 @@
             <input type="submit" value="Save Changes" class="buttontwo">
           </form>
         </div>
-      </div>
-      <!--BEGIN SPOTIFY REQUEST -->
-      <div>
-        <form ng-submit="disq.getSpotify()">
-          <input type="submit" value="Get Results">
-        </form>
-      </div>
-      <!-- END SPOTIFY REQUEST -->
-      <div class="searchArea">
-        <div class="similar">
-          <form ng-submit="disq.getMusic()">
-            <h3>Search For </h3>
-            <input type="text" ng-model="disq.artist">
-              <!-- <h3>Similar To</h3>
-              <input type="text" ng-model="disq.userInput"> -->
-            <div>
+        <div class="searchArea">
+          <div class="similar">
+            <form ng-submit="disq.getMusic()">
+
+              <h3>Search For </h3>
+              <select ng-model="disq.category" name="category">
+                <option value="music">Music</option>
+                <option value="movies">Movies</option>
+              </select>
+              <h3>Similar To</h3>
+              <input type="text" ng-model="disq.userInput">
+              <div>
               <input type="submit" value="Find Similar Results" class="buttonthree">
-            </div>
-          </form>
+            </form>
+          </div>
+          </div>
+
+        </div>
+        <div ng-repeat="music in disq.music">
+        <ul>
+          <li>{{music.Name}}</li>
+          <li>{{music.wTeaser}}</li>
+          <li><a href="{{music.wUrl}}">Wikipedia</a></li>
+          <li><a href="{{music.yUrl}}">Youtube</li>
+        </ul>
         </div>
 
-        <div ng-repeat="music in disq.music" class="results">
-      <div class="artist">
-        <h3>{{music.Name}}</h3>
-          <p> {{music.wTeaser}}</p>
-          <a href="{{music.wUrl}}" class="link">Wikipedia</a>
-          <a href="{{music.yUrl}}" class="link">Youtube</a>
-        <button ng-click="disq.like()" class="buttonfour">Like </button>
-
-    </div>
-    <footer>
-        Made By J.A.M.
-    </footer>
+</div>
+      <footer>
+          Made By J.A.M.
+      </footer>
   </body>
 </html>
