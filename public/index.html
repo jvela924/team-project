@@ -22,6 +22,8 @@
       <div class="create">
         <div ng-if="disq.loggedInUsername">
           <h1>Welcome, {{disq.loggedInUsername}}</h1>
+          <a href="/login"><button>Login Spotify</button></a>
+          <button ng-click="disq.getSpotify()">Get Track</button>
         </div>
         <div ng-if="!disq.loggedInUsername">
           <h2>Log In or Sign Up</h2>
