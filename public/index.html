@@ -70,10 +70,8 @@
       </div>
         <div ng-show="disq.hype" class="flex" >
           <div ng-repeat="like in disq.likes" class="balloon">
-            <h2>Name</h2>
-            <h3>{{like.Name}}</h3>
-            <h2>Bio</h2>
-            <p> {{like.wTeaser| limitTo : 50}}</p>
+            <h1>{{like.Name}}</h1>
+            <p> {{like.wTeaser| limitTo : 100}}</p>
             <a href="{{like.wUrl}}" class="linktwo">Wikipedia</a>
             <a href="{{like.yUrl}}" class="linktwo">Youtube</a>
           </div>
@@ -83,11 +81,13 @@
       <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
         <h2>{{page.name}}</h2>
         <img ng-src="{{page.image}}" alt="{{page.name}}">
-        <h3>{{page.age}}</h3>
-        <h4>{{page.bio}}</h4>
+        <h3>Age: {{page.age}}</h3>
+        <h3>Bio</h3><h4>{{page.bio}}</h4>
+        <h4 class="fav">Favorite Artists:</h4>
         <div ng-repeat="artist in page.fav_artists">
           <h4>{{artist}}</h4>
         </div>
+        <h4 class="fav">Favorite Movies:</h4>
         <div ng-repeat="movie in page.fav_movies">
           <h4>{{movie}}</h4>
         </div>
