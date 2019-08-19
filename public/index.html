@@ -22,6 +22,8 @@
       <div class="create">
         <div ng-if="disq.loggedInUsername">
           <h1>Welcome, {{disq.loggedInUsername}}</h1>
+          <a href="/login"><button>Login Spotify</button></a>
+          <button ng-click="disq.getSpotify()">Get Track</button>
         </div>
         <div ng-if="!disq.loggedInUsername">
           <h2>Log In or Sign Up</h2>
@@ -43,13 +45,10 @@
         </div>
         <div ng-if="disq.loggedInUsername">
           <button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
-
-
         </div>
         <div ng-if="disq.loggedInUsername">
-              <button ng-click="disq.wobble()" class="button">Liked Media </button>
+          <button ng-click="disq.wobble()" class="button">Liked Media </button>
         </div>
-
         <div ng-if="disq.loggedInUsername">
           <div ng-show="disq.state" >
             <form ng-submit="disq.createItem()"  ng-hide="showme">
@@ -71,28 +70,17 @@
           </div>
         </div>
       </div>
-
-
-          <div ng-show="disq.hype" class="flex" >
-
-                <div ng-repeat="like in disq.likes" class="balloon">
-                    <h2>Name</h2>
-                  <h3>{{like.Name}}</h3>
-                    <h2>Bio</h2>
-                    <p> {{like.wTeaser| limitTo : 50}}</p>
-                    <a href="{{like.wUrl}}" class="linktwo">Wikipedia</a>
-                    <a href="{{like.yUrl}}" class="linktwo">Youtube</a>
-                </div>
-
-
-
+      <div ng-show="disq.hype" class="flex" >
+        <div ng-repeat="like in disq.likes" class="balloon">
+          <h2>Name</h2>
+          <h3>{{like.Name}}</h3>
+          <h2>Bio</h2>
+          <p> {{like.wTeaser| limitTo : 50}}</p>
+          <a href="{{like.wUrl}}" class="linktwo">Wikipedia</a>
+          <a href="{{like.yUrl}}" class="linktwo">Youtube</a>
         </div>
       </div>
-    </div>
     </nav>
-
-
-    </div>
     <div class="container">
       <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
         <h2>{{page.name}}</h2>
@@ -107,6 +95,28 @@
         </div>
         <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
         <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
+        <!--Begin COMMENT Section -->
+        <div class="container">
+          <h1 align="center">Comments</h1>
+          <hr/>
+          <div class="form-group">
+            <h2>Leave a Reply</h2>
+            <form ng-submit="disq.addComment(page)">
+              <textarea class="form-control" rows="5" ng-model="disq.cmtName" placeholder="Your Comment"></textarea>
+              <br/>
+              <button>Comment</button>
+              <br/>
+              <hr/>
+              <h3>Comments</h3>
+              <ul>
+                <li ng-repeat="cmt in disq.comments">{{disq.loggedInUsername}} | {{cmt}}
+                  <a href="" ng-click="postCmt($index)"><span style="color: red; float:right;"></span></a>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+        <!--End Comment Section -->
         <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
           <h3>Name</h3>
           <input type="text" ng-model="disq.updatedName">
@@ -151,7 +161,6 @@
         </div>
       </div>
     </div>
-
     <footer>
         Made By J.A.M.
     </footer>
