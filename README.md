@@ -14,9 +14,9 @@ The current state of the application is for development purposes only and is cur
 * Users can edit and delete their disqover.
 * Users can view and search through all disqovers.
 * Users can search for similar music and/or movies, based on their specified search criteria.
-  ** Users can like a similar result and view all of their likes.
-  ** Users can leave a comment on other users disqover pages.
-  ** Users can like a comment that was leaved by another user.
+* Users can like a similar result and view all of their likes.
+* Users can leave a comment on other users disqover pages.
+* Users can like a comment that was leaved by another user.
   
 ### Technologies Used
 #### Node.js
