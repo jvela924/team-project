@@ -108,9 +108,7 @@
         <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
         <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
         <!--Begin COMMENT Section -->
-       <div class="container">
-         <h1 align="center">Comments</h1>
-         <hr/>
+       <div class="comments">
          <div class="form-group">
            <h2>Leave a Reply</h2>
            <form ng-submit="disq.addComment(page)">
