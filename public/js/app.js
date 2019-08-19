@@ -1,5 +1,4 @@
 const app = angular.module('MyApp', [])
-
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = []
@@ -17,6 +16,33 @@ app.controller('disqoverController', ['$http', function($http){
   // }
   //
   // this.getUser()
+  this.comments = [];
+  this.addComment = function(disqover){
+    $http({
+        method:'PUT',
+        url: '/disqover/'+ disqover._id,
+        data: {
+          comments: this.comments
+        }
+      }).then(function(response){
+          console.log(controller.cmtName);
+          controller.comments.push(controller.cmtName)
+          console.log(response);
+        },function(error){
+          
+        });
+    }
+  // this.getComments = function(disqover){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/disqover/' + disqover._id
+  //   }).then(function(response){
+  //     controller.comments = response.data.comments
+  //   }, function(error){
+  //     console.log(error);
+  //   })
+  // }
+  // this.getComments();
   this.addLikes = function () {
     $http({
      method:'PUT',
@@ -58,6 +84,10 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
+  this.wobble = function () {
+    console.log("hello");
+    this.hype = !this.hype;
+  };
   this.toggle = function () {
     console.log("hello");
     this.state = !this.state;
