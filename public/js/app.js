@@ -2,10 +2,6 @@ const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = []
-<<<<<<< HEAD
-
-
-=======
   // this.getUser = function(){
   //   $http({
   //     method:'GET',
@@ -20,7 +16,6 @@ app.controller('disqoverController', ['$http', function($http){
   // }
   //
   // this.getUser()
->>>>>>> 81ba4f6caf8e57056114c685c5d2b6f4b3938016
   this.comments = [];
   this.addComment = function(disqover){
     $http({
@@ -34,7 +29,7 @@ app.controller('disqoverController', ['$http', function($http){
           controller.comments.push(controller.cmtName)
           console.log(response);
         },function(error){
-          
+
         });
     }
   // this.getComments = function(disqover){
@@ -89,14 +84,10 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-<<<<<<< HEAD
-
-=======
   this.wobble = function () {
     console.log("hello");
     this.hype = !this.hype;
   };
->>>>>>> 81ba4f6caf8e57056114c685c5d2b6f4b3938016
   this.toggle = function () {
     console.log("hello");
     this.state = !this.state;

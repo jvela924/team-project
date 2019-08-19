@@ -107,6 +107,28 @@
         </div>
         <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
         <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
+        <!--Begin COMMENT Section -->
+       <div class="container">
+         <h1 align="center">Comments</h1>
+         <hr/>
+         <div class="form-group">
+           <h2>Leave a Reply</h2>
+           <form ng-submit="disq.addComment(page)">
+             <textarea class="form-control" rows="5" ng-model="disq.cmtName" placeholder="Your Comment"></textarea>
+             <br/>
+             <button>Comment</button>
+             <br/>
+             <hr/>
+             <h3>Comments</h3>
+             <ul>
+               <li ng-repeat="cmt in disq.comments">{{disq.loggedInUsername}} | {{cmt}}
+                 <a href="" ng-click="postCmt($index)"><span style="color: red; float:right;"></span></a>
+               </li>
+             </ul>
+           </form>
+         </div>
+       </div>
+       <!--End Comment Section -->
         <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
           <h3>Name</h3>
           <input type="text" ng-model="disq.updatedName">
