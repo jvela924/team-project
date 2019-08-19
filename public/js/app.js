@@ -4,20 +4,6 @@ app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = []
 
-  // this.getUser = function(){
-  //   $http({
-  //     method:'GET',
-  //     url: '/users'
-  //   }).then(function(response){
-  //     controller.users = response.data
-  //     console.log(controller.users);
-  //     console.log(response);
-  //   }, function(error){
-  //     console.log(error);
-  //   })
-  // }
-  //
-  // this.getUser()
 
 
   this.addLikes = function () {
@@ -63,12 +49,6 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-
-  this.wobble = function () {
-    console.log("hello");
-    this.hype = !this.hype;
-  };
-
 
   this.toggle = function () {
     console.log("hello");
@@ -246,14 +226,3 @@ app.controller('disqoverController', ['$http', function($http){
   this.getItem();
 
 }]);
-//SPOTIFY Controller
-// $( () => {
-//   const spotifyCall = () => {
-//     $.ajax({
-//       method: "GET",
-//       url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
-//     }).done(function(data){
-//       console.log(data);
-//     })
-//   }
-// })
