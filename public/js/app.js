@@ -3,7 +3,6 @@ const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = []
-
   // this.getUser = function(){
   //   $http({
   //     method:'GET',
@@ -18,8 +17,6 @@ app.controller('disqoverController', ['$http', function($http){
   // }
   //
   // this.getUser()
-
-
   this.addLikes = function () {
     $http({
      method:'PUT',
@@ -33,7 +30,6 @@ app.controller('disqoverController', ['$http', function($http){
        console.log(error);
      })
    }
-
    this.getLikes = function() {
      $http({
        method:"GET",
@@ -43,7 +39,6 @@ app.controller('disqoverController', ['$http', function($http){
        console.log(controller.likes);
      })
    }
-
   this.like = function (music) {
     $http({
       method: 'GET',
@@ -63,14 +58,11 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-
   this.toggle = function () {
     console.log("hello");
     this.state = !this.state;
   };
-
   this.indexOfEditFormToShow = null
-
   this.logOut = function(){
     $http({
         method:'DELETE',
@@ -82,7 +74,6 @@ app.controller('disqoverController', ['$http', function($http){
         console.log(error);
     });
   }
-
   this.createUser = function(){
     $http({
         method:'POST',
@@ -98,7 +89,6 @@ app.controller('disqoverController', ['$http', function($http){
         console.log("error");
     });
   }
-
   this.logIn = function(){
     $http({
         method:'POST',
@@ -119,9 +109,6 @@ app.controller('disqoverController', ['$http', function($http){
         console.log(error);
     })
   }
-
-
-
   this.deleteItem = function(disqover){
       $http({
           method: "DELETE",
@@ -133,7 +120,6 @@ app.controller('disqoverController', ['$http', function($http){
         console.log(error);
       })
     }
-
   this.editItem = function(disqover){
       $http({
           method:'PUT',
@@ -157,7 +143,6 @@ app.controller('disqoverController', ['$http', function($http){
           }
       );
   }
-
   this.getItem = function(){
       $http({
         method:'GET',
@@ -168,7 +153,6 @@ app.controller('disqoverController', ['$http', function($http){
         // console.log(response.data);
       });
     };
-
   this.createItem = function(){
         $http({
              method:'POST',
@@ -187,8 +171,6 @@ app.controller('disqoverController', ['$http', function($http){
       controller.getItem();
     });
       }
-
-
   this.apiKey = function(){
   $http({
     method: 'GET',
@@ -197,7 +179,6 @@ app.controller('disqoverController', ['$http', function($http){
     controller.apiKey = "k=" + response.data
   });
 }
-
   this.apiKey();
   this.music = [];
   this.userInput = '';
@@ -208,10 +189,6 @@ app.controller('disqoverController', ['$http', function($http){
   this.limit = "limit=5";
   this.query = "q=";
   this.type = "type=";
-  // this.musicResults;
-  // this.movieResults;
-  // this.searchURL = this.baseURL + this.info + this.ampersand + this.apiKey + this.ampersand + this.limit + this.ampersand + this.query + this.ampersand + this.type
-  //https://tastedive.com/api/similar?info=1&API-KEY-HERE&limit=5&q=UserInputHere&type=Category
   this.getMusic = function(music){
     $http({
       method: 'GET',
@@ -236,18 +213,5 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-
   this.getItem();
-
 }]);
-//SPOTIFY Controller
-// $( () => {
-//   const spotifyCall = () => {
-//     $.ajax({
-//       method: "GET",
-//       url: `https://api.spotify.com/v1/search?q=track:antartica&type=track`
-//     }).done(function(data){
-//       console.log(data);
-//     })
-//   }
-// })
