@@ -25,24 +25,27 @@ app.controller('disqoverController', ['$http', function($http){
           comments: this.comments
         }
       }).then(function(response){
-          console.log(controller.cmtName);
-          controller.comments.push(controller.cmtName)
+
+          console.log(controller.cmt);
+          controller.comments = controller.cmt
+          // controller.comments.push(controller.cmt)
+          console.log(controller.comments);
           console.log(response);
         },function(error){
 
         });
     }
-  // this.getComments = function(disqover){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/disqover/' + disqover._id
-  //   }).then(function(response){
-  //     controller.comments = response.data.comments
-  //   }, function(error){
-  //     console.log(error);
-  //   })
-  // }
-  // this.getComments();
+  this.getComments = function(disqover){
+    $http({
+      method: 'GET',
+      url: '/disqover/' + disqover._id
+    }).then(function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
+  }
+  // this.getComments(disqover);
   this.addLikes = function () {
     $http({
      method:'PUT',
