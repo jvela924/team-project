@@ -29,7 +29,7 @@ app.controller('disqoverController', ['$http', function($http){
           controller.comments.push(controller.cmtName)
           console.log(response);
         },function(error){
-          
+
         });
     }
   // this.getComments = function(disqover){
