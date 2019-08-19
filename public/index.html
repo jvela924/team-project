@@ -47,6 +47,9 @@
           <button ng-click="disq.toggle()" class="button">Create Disqover Page </button>
         </div>
         <div ng-if="disq.loggedInUsername">
+          <button ng-click="disq.wobble()" class="button">Liked Media </button>
+        </div>
+        <div ng-if="disq.loggedInUsername">
           <div ng-show="disq.state" >
             <form ng-submit="disq.createItem()"  ng-hide="showme">
               <h1>Create your Disqover</h1>
@@ -67,20 +70,17 @@
           </div>
         </div>
       </div>
-    </nav>
-    <div>
-      <h1>Likes</h1>
-      <div>
-        <div ng-repeat="like in disq.likes" class="results">
-          <div class="artist">
+      <div ng-show="disq.hype" class="flex" >
+        <div ng-repeat="like in disq.likes" class="balloon">
+          <h2>Name</h2>
           <h3>{{like.Name}}</h3>
-            <p> {{like.wTeaser}}</p>
-            <a href="{{like.wUrl}}" class="link">Wikipedia</a>
-            <a href="{{like.yUrl}}" class="link">Youtube</a>
-          </div>
+          <h2>Bio</h2>
+          <p> {{like.wTeaser| limitTo : 50}}</p>
+          <a href="{{like.wUrl}}" class="linktwo">Wikipedia</a>
+          <a href="{{like.yUrl}}" class="linktwo">Youtube</a>
         </div>
       </div>
-    </div>
+    </nav>
     <div class="container">
       <div ng-if="disq.loggedInUsername" ng-repeat="page in disq.items" class="item">
         <h2>{{page.name}}</h2>
@@ -95,6 +95,28 @@
         </div>
         <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
         <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
+        <!--Begin COMMENT Section -->
+        <div class="container">
+          <h1 align="center">Comments</h1>
+          <hr/>
+          <div class="form-group">
+            <h2>Leave a Reply</h2>
+            <form ng-submit="disq.addComment(page)">
+              <textarea class="form-control" rows="5" ng-model="disq.cmtName" placeholder="Your Comment"></textarea>
+              <br/>
+              <button>Comment</button>
+              <br/>
+              <hr/>
+              <h3>Comments</h3>
+              <ul>
+                <li ng-repeat="cmt in disq.comments">{{disq.loggedInUsername}} | {{cmt}}
+                  <a href="" ng-click="postCmt($index)"><span style="color: red; float:right;"></span></a>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+        <!--End Comment Section -->
         <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
           <h3>Name</h3>
           <input type="text" ng-model="disq.updatedName">
@@ -105,9 +127,9 @@
           <h3>Bio</h3>
           <textarea ng-model="disq.updatedBio" rows="8" cols="80">Enter your bio</textarea>
           <h4>Favorite Artists</h4>
-          <input type="text" ng-model="disq.updatedFav_artists">
+          <input type="text" ng-model="disq.fav_artists">
           <h4>Favorite Movies</h4>
-          <input type="text" ng-model="disq.updatedFav_movies"><br>
+          <input type="text" ng-model="disq.fav_movies"><br>
           <input type="submit" value="Save Changes" class="buttontwo">
         </form>
       </div>
@@ -127,14 +149,16 @@
           </form>
         </div>
       </div>
-    </div>
-    <div ng-repeat="music in disq.music" class="results">
-      <div class="artist">
-        <h3>{{music.Name}}</h3>
-        <p> {{music.wTeaser}}</p>
-        <a href="{{music.wUrl}}" class="link">Wikipedia</a>
-        <a href="{{music.yUrl}}" class="link">Youtube</a>
-        <button ng-click="disq.like(music, loggedInUsername)" class="buttonfour">Like </button>
+      <div class="flextwo">
+        <div ng-repeat="music in disq.music" class="artist">
+            <h2>Name</h2>
+            <h3>{{music.Name}}</h3>
+            <h3>Bio</h3>
+            <p> {{music.wTeaser}}</p>
+            <a href="{{music.wUrl}}" class="link">Wikipedia</a>
+            <a href="{{music.yUrl}}" class="link">Youtube</a>
+            <button ng-click="disq.like(music, loggedInUsername)" class="buttonfour">Like </button>
+        </div>
       </div>
     </div>
     <footer>
