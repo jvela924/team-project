@@ -92,7 +92,7 @@
           <h4>{{movie}}</h4>
         </div>
         <!-- Attempt to only show delete button if the logged in User is the same as the disqover page's username (page.name)-->
-        <div ng-if="disq.loggedInUsername === page.name">
+        <div ng-if="disq.loggedInUsername === page.username">
         <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
         <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
         <!--Begin COMMENT Section -->
