@@ -34,3 +34,8 @@ Mongoose is a schema based framework for modeling application data. It connects 
 ### The API
 We used the [TastedDive](https://tastedive.com/read/api) API to get similar results for music and movies, based on the users search criteria. We limited results to 5, and se the type of query based on whether the user selected movies or music. 
 While using the API, we came across a CORS (Cross-Origin Resource Sharing) issue. TasteDive was not sending the Access-Control-Allow-Origin header, so Heroku would not get resuklts from the API. As a workaround, for the purposes of this project, all users need to install the [Allow-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) plugin, which allows you to make an http request to any site from any source.
+
+### Unsolved Challenges
+* Not sending an error message if a user enters the wrong password. They can just reattempt to login with the correct password.
+* API CORS issue - we could improve the app by using a different API with similar functionality, but we didn't find any that were as good yet.
+* Comments can be posted, however, we haven't assigned a user to the comment or saved comments on each disqvoer page. 
