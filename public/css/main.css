@@ -74,6 +74,7 @@ textarea{
 }
 button{
   width: 200px;
+  height: 75px;
   border: 3px solid #000;
   font-family: inherit;
   font-size: inherit;
@@ -91,7 +92,7 @@ button{
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-   margin: auto
+   margin: 20px auto
 }
 .red{
   color: red;
@@ -167,7 +168,7 @@ button{
 
 
 .link{
-  color: red;
+  color: white;
     text-shadow: none;
 }
 
@@ -251,7 +252,7 @@ button{
       letter-spacing: 1px;
       font-weight: 700;
       font-size: 14px;
-      margin: 30px;
+      margin: 30px auto;
       outline: none;
       position: relative;
       -webkit-transition: all 0.3s;
@@ -296,7 +297,9 @@ button{
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  height: 100%;
   margin: auto;
+  margin-bottom:100px;
 }
 .item{
   display: flex;
