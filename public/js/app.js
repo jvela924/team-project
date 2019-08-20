@@ -95,6 +95,11 @@ app.controller('disqoverController', ['$http', function($http){
     this.hype = !this.hype;
   };
 
+  this.toggle = function () {
+    console.log("hello");
+    this.state = !this.state;
+  };
+
   this.tobble = function (page) {
     this.crispy =!this.crispy;
   };

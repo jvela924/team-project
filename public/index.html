@@ -99,7 +99,7 @@
         <div ng-repeat="movie in page.fav_movies">
           <h4>{{movie}}</h4>
         </div>
-        <div ng-if="disq.loggedInUsername === page.username">
+        <div ng-if="disq.loggedInUsername">
           <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
           <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
         </div>
@@ -168,7 +168,17 @@
           </form>
         </div>
       </div>
-
+      <div class="flextwo">
+           <div ng-repeat="music in disq.music" class="artist">
+               <h2>Name</h2>
+               <h3>{{music.Name}}</h3>
+               <h3>Bio</h3>
+               <p> {{music.wTeaser}}</p>
+               <a href="{{music.wUrl}}" class="link">Wikipedia</a>
+               <a href="{{music.yUrl}}" class="link">Youtube</a>
+               <button ng-click="disq.like(music, loggedInUsername)" class="buttonfour">Like </button>
+           </div>
+         </div>
     </div>
 
     <footer>
