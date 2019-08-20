@@ -12,7 +12,7 @@
     <header>
       <div class="vimeo-wrapper">
         <iframe
-          src="https://player.vimeo.com/video/120717482?background=1&autoplay=1&loop=1&byline=0&title=0"
+          src="https://player.vimeo.com/video/14352658?background=1&autoplay=1&loop=1&byline=0&title=0"
           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
         </iframe>
       </div>
@@ -49,7 +49,7 @@
         </div>
         <div>
           <form>
-            <div>
+              <div ng-if="disq.loggedInUsername">
               <h3>Search Disqovers</h3>
               <input type="text" ng-model="searchBox">
             </div>
@@ -105,16 +105,25 @@
         </div>
         <div class="container">
           <button ng-click="disq.addFollower(page)">Follow This Disqover</button>
-          <h5>Followers: {{page.followers.length}}</h5>
+
+        </div>
+
+        <div>
+            <h5>Followers: {{page.followers.length}}</h5>
+
         </div>
         <!--Begin COMMENT Section -->
+        <div>
+            <button ng-click="disq.tobble()" >Leave A Comment </button>
+        </div>
+    <div ng-show="disq.crispy">
        <div class="comments">
          <div class="form-group">
-           <h2>Leave a Reply</h2>
+           <h2>Leave  A Message</h2>
            <form ng-submit="disq.addComment(page)">
              <textarea class="form-control" rows="5" ng-model="disq.comment" placeholder="Your Comment"></textarea>
              <br/>
-             <input type="submit" value="Post Comment"/>
+             <input type="submit" value="Post Comment" class="buttonthree"/>
              <br/>
              <hr/>
              <h3>Comments</h3>
@@ -125,6 +134,7 @@
            </ul>
          </div>
        </div>
+     </div>
        <!--End Comment Section -->
         <form ng-if="$index === disq.indexOfEditFormToShow" ng-submit ="disq.editItem(page)">
           <h3>Name</h3>
@@ -158,18 +168,9 @@
           </form>
         </div>
       </div>
+
     </div>
-    <div class="flextwo">
-      <div ng-repeat="music in disq.music" class="artist">
-          <h2>Name</h2>
-          <h3>{{music.Name}}</h3>
-          <h3>Bio</h3>
-          <p> {{music.wTeaser}}</p>
-          <a href="{{music.wUrl}}" class="link">Wikipedia</a>
-          <a href="{{music.yUrl}}" class="link">Youtube</a>
-          <button ng-click="disq.like(music, loggedInUsername)" class="buttonfour">Like </button>
-      </div>
-    </div>
+
     <footer>
         Made By J.A.M.
     </footer>

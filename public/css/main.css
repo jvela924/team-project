@@ -99,6 +99,7 @@ button{
 
 .searchArea{
   margin-top: 100px;
+  margin-bottom: 100px;
   width: 100%;
   height: 100%;
   padding: 40px;
@@ -299,13 +300,15 @@ button{
 }
 .item{
   display: flex;
-  background-color:rgba(255,255,255, 0.8);
+  background-image: url('https://i.pinimg.com/originals/b7/e6/0b/b7e60b72ebdde2fb681f12ef65a2bf56.jpg');
+  background-size: cover;
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  color: white;
   width: 400px;
   padding: 20px;
-  min-height: 800px;
+  min-height: 900px;
   font-family: 'Quicksand', sans-serif;
   margin: 50px;
   margin-bottom: 100px;
@@ -315,7 +318,7 @@ button{
 }
 
 .item:hover{
-    background-color:rgba(255,255,255, 1);
+  background-image: url("https://wallpapercave.com/wp/wp2623056.jpg");
     -moz-box-shadow:    inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow:         inset 0 0 10px #000000;
@@ -349,9 +352,10 @@ button{
 }
 
 .artist{
-  background-color:rgba(255,255,255, 0.8);
+background-image: url("https://wallpaperplay.com/walls/full/9/7/4/2407.jpg");
   text-align: center;
   width: 400px;
+  color: white;
   padding: 20px;
   min-height: 800px;
   font-family: 'Quicksand', sans-serif;
@@ -361,6 +365,21 @@ button{
  -webkit-box-shadow: 3px 3px 5px 6px #000;
   box-shadow:         3px 3px 5px 6px #000
 }
+.artist:hover{
+background-image: url("https://animal-wallpaper.com/wallpaper/aesthetic-hipster-background-hd-wallpaper-For-Background-HD-Wallpaper.jpg");
+  text-align: center;
+  width: 400px;
+  color: white;
+  padding: 20px;
+  min-height: 800px;
+  font-family: 'Quicksand', sans-serif;
+  margin: 50px;
+  margin-bottom: 100px;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
 
 h4 {
   margin-bottom: 10px;
