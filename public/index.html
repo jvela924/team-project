@@ -112,17 +112,17 @@
          <div class="form-group">
            <h2>Leave a Reply</h2>
            <form ng-submit="disq.addComment(page)">
-             <textarea class="form-control" rows="5" ng-model="page.comment" placeholder="Your Comment"></textarea>
+             <textarea class="form-control" rows="5" ng-model="disq.comment" placeholder="Your Comment"></textarea>
              <br/>
              <input type="submit" value="Post Comment"/>
              <br/>
              <hr/>
              <h3>Comments</h3>
-             <ul>
-               <li ng-repeat="comment in page.comments">{{disq.loggedInUsername}} | {{comment}}
-               </li>
-             </ul>
            </form>
+           <ul>
+             <li ng-repeat="comment in disq.comments">{{comment}}
+             </li>
+           </ul>
          </div>
        </div>
        <!--End Comment Section -->

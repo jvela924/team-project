@@ -3,17 +3,18 @@ app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = [];
   // this.followers = [];
-  // this.comments = [];
+  this.comments = [];
   this.addComment = function(disqover){
     $http({
         method:'PUT',
         url: '/disqover/comments/'+ disqover._id,
         data: {
+          comment: this.comment,
           comments: this.comments
         }
       }).then(function(response){
-          console.log(controller.comment);
-          controller.comments = response.data.comments
+          console.log(response);
+          controller.comments.push(controller.comment)
           // controller.comments.push(controller.cmt)
           console.log(controller.comments);
           controller.getItem();

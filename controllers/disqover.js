@@ -31,14 +31,23 @@ router.get('/', (req,res) => {
   })
 })
 
+router.get('/comments/:id', (req, res) => {
+  Disqover.find({}, (err, foundDisqovers) => {
+
+    res.json(foundDisqovers)
+  })
+})
+
 router.delete('/:id', (req,res) => {
   Disqover.findByIdAndRemove(req.params.id, (err, deletedDisqover) => {
     res.json(deletedDisqover)
   })
 })
+
 router.put('/comments/:id', (req, res) => {
-  Disqover.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, {new:true}, (error, updatedDisqover) => {
-    console.log(req.body.comments);
+  Disqover.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comment}}, {new:true}, (error, updatedDisqover) => {
+    console.log(req.body.comment);
+    console.log(req.body);
     res.json(updatedDisqover);
   })
 })
