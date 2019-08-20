@@ -3,21 +3,20 @@ app.controller('disqoverController', ['$http', function($http){
   const controller = this;
   this.likes = [];
   // this.followers = [];
-  this.comments = [];
+  // this.comments = [];
   this.addComment = function(disqover){
     $http({
         method:'PUT',
-        url: '/disqover/'+ disqover._id,
+        url: '/disqover/comments/'+ disqover._id,
         data: {
           comments: this.comments
         }
       }).then(function(response){
-
-          console.log(controller.cmt);
-          controller.comments = controller.cmt
+          console.log(controller.comment);
+          controller.comments = response.data.comments
           // controller.comments.push(controller.cmt)
           console.log(controller.comments);
-          console.log(response);
+          controller.getItem();
         },function(error){
           console.log(error);
         });
@@ -28,17 +27,6 @@ app.controller('disqoverController', ['$http', function($http){
     //establish array
     controller.carouselArr.push(image)
   }
-  this.getComments = function(disqover){
-    $http({
-      method: 'GET',
-      url: '/disqover/' + disqover._id
-    }).then(function(response){
-      console.log(response);
-    }, function(error){
-      console.log(error);
-    })
-  }
-  // this.getComments(disqover);
   this.addFollower = function(disqover) {
     $http({
       method: 'PUT',
@@ -58,18 +46,6 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
-  // this.getFollowers = function(disqover) {
-  //   $http({
-  //     method: 'GET',
-  //     url: '/disqover/' + disqover._id,
-  //   }).then(function(response){
-  //     controller.numFollowers = controller.followers.length;
-  //     console.log(controller.numFollowers);
-  //   }, function(error){
-  //     console.log(error);
-  //   })
-  // }
-
   this.addLikes = function () {
     $http({
      method:'PUT',
@@ -84,7 +60,7 @@ app.controller('disqoverController', ['$http', function($http){
        console.log(error);
      })
    }
-   this.getLikes = function() {
+  this.getLikes = function() {
      $http({
        method:"GET",
        url: '/users/' + controller.userId,

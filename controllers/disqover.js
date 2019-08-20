@@ -37,8 +37,9 @@ router.delete('/:id', (req,res) => {
   })
 })
 router.put('/comments/:id', (req, res) => {
-  Disqover.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedDisqover) => {
-    {$push: {comments: req.body.comments}}
+  Disqover.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, {new:true}, (error, updatedDisqover) => {
+    console.log(req.body.comments);
+    res.json(updatedDisqover);
   })
 })
 router.put('/:id', (req,res) => {
@@ -49,11 +50,8 @@ router.put('/:id', (req,res) => {
   // req.body.fav_movies = movies
   Disqover.findByIdAndUpdate(req.params.id, { $push: {followers: req.session.currentUser.username}}, {new:true}, (err, updatedDisqover) => {
     console.log(req.session.currentUser.username);
-
-    res.json(updatedDisqover)
-
+    res.json(updatedDisqover);
   })
 })
-
 
 module.exports = router;
