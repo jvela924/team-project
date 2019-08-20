@@ -8,7 +8,9 @@ const disqoverSchema = new mongoose.Schema({
   fav_artists: Array,
   fav_movies: Array,
   username: String,
-  comments: Array
+  comment: String,
+  comments: Array,
+  followers: Array
 })
 
 const Disqovers = mongoose.model('Disqover', disqoverSchema)
