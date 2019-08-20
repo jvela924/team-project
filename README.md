@@ -37,4 +37,5 @@ While using the API, we came across a CORS (Cross-Origin Resource Sharing) issue
 
 ### Unsolved Challenges
 * Not sending an error message if a user enters the wrong password. They can just reattempt to login with the correct password.
-* API CORS issue
+* API CORS issue - we could improve the app by using a different API with similar functionality, but we didn't find any that were as good yet.
+* Comments can be posted, however, we haven't assigned a user to the comment or saved comments on each disqvoer page. 
