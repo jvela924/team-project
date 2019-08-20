@@ -99,7 +99,7 @@
         <div ng-repeat="movie in page.fav_movies">
           <h4>{{movie}}</h4>
         </div>
-        <div ng-if="disq.loggedInUsername">
+        <div ng-if="disq.loggedInUsername === page.username">
           <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
           <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
         </div>
