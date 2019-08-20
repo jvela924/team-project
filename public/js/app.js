@@ -1,21 +1,8 @@
 const app = angular.module('MyApp', [])
 app.controller('disqoverController', ['$http', function($http){
   const controller = this;
-  this.likes = []
-  // this.getUser = function(){
-  //   $http({
-  //     method:'GET',
-  //     url: '/users'
-  //   }).then(function(response){
-  //     controller.users = response.data
-  //     console.log(controller.users);
-  //     console.log(response);
-  //   }, function(error){
-  //     console.log(error);
-  //   })
-  // }
-  //
-  // this.getUser()
+  this.likes = [];
+  // this.followers = [];
   this.comments = [];
   this.addComment = function(disqover){
     $http({
@@ -32,9 +19,15 @@ app.controller('disqoverController', ['$http', function($http){
           console.log(controller.comments);
           console.log(response);
         },function(error){
-
+          console.log(error);
         });
     }
+  this.carouselArr = [];
+  this.addToCarousel = function(image) {
+    //establish an interval
+    //establish array
+    controller.carouselArr.push(image)
+  }
   this.getComments = function(disqover){
     $http({
       method: 'GET',
@@ -46,12 +39,44 @@ app.controller('disqoverController', ['$http', function($http){
     })
   }
   // this.getComments(disqover);
+  this.addFollower = function(disqover) {
+    $http({
+      method: 'PUT',
+      url: '/disqover/' + disqover._id,
+      data: {
+        followers: this.followers
+      }
+    }).then(function(response){
+      controller.followers = response.data.followers
+      // controller.followers.push(controller.loggedInUsername);
+      console.log(response.data);
+      console.log(controller.followers);
+      controller.numFollowers = controller.followers.length;
+      console.log(controller.numFollowers);
+      controller.getItem();
+    }, function(error){
+      console.log(error);
+    })
+  }
+  // this.getFollowers = function(disqover) {
+  //   $http({
+  //     method: 'GET',
+  //     url: '/disqover/' + disqover._id,
+  //   }).then(function(response){
+  //     controller.numFollowers = controller.followers.length;
+  //     console.log(controller.numFollowers);
+  //   }, function(error){
+  //     console.log(error);
+  //   })
+  // }
+
   this.addLikes = function () {
     $http({
      method:'PUT',
      url: '/users/' + controller.userId,
      data:{
-       likes: this.likes}
+       likes: this.likes
+     }
      }).then(function(response){
        console.log(controller.likes);
 
@@ -65,7 +90,7 @@ app.controller('disqoverController', ['$http', function($http){
        url: '/users/' + controller.userId,
      }).then(function(response){
        controller.likes = response.data.likes;
-       console.log(controller.likes);
+       // console.log(controller.likes);
      })
    }
   this.like = function (music) {
@@ -232,16 +257,6 @@ app.controller('disqoverController', ['$http', function($http){
       controller.music = response.data.Similar.Results
       console.log(controller.music);
 
-    }, function(error){
-      console.log(error);
-    })
-  }
-  this.getSpotify = function(){
-    $http({
-      method:"GET",
-      url: 'https://api.spotify.com/v1/search?q=track:antartica&type=track'
-    }).then(function(response){
-      console.log(response);
     }, function(error){
       console.log(error);
     })

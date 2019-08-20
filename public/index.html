@@ -55,7 +55,6 @@
             </div>
           </form>
         </div>
-
         <div ng-if="disq.loggedInUsername">
           <div ng-show="disq.state" >
             <form ng-submit="disq.createItem()"  ng-hide="showme">
@@ -100,16 +99,19 @@
         <div ng-repeat="movie in page.fav_movies">
           <h4>{{movie}}</h4>
         </div>
-        <!-- Attempt to only show delete button if the logged in User is the same as the disqover page's username (page.name)-->
         <div ng-if="disq.loggedInUsername === page.username">
           <button ng-click="disq.deleteItem(page)" type="button">Delete your Disqover</button>
           <button ng-if="$index !== disq.indexOfEditFormToShow" href="#" ng-click="disq.indexOfEditFormToShow = $index">Edit Disqover</button>
+        </div>
+        <div class="container">
+          <button ng-click="disq.addFollower(page)">Follow This Disqover</button>
+          <h5>Followers: {{page.followers.length}}</h5>
         </div>
         <!--Begin COMMENT Section -->
        <div class="comments">
          <div class="form-group">
            <h2>Leave a Reply</h2>
-           <form ng-submit="disq.addComment(page); disq.getComments(page)">
+           <form ng-submit="disq.addComment(page)">
              <textarea class="form-control" rows="5" ng-model="disq.cmt" placeholder="Your Comment"></textarea>
              <br/>
              <input type="submit" value="Post Comment"/>
