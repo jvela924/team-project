@@ -89,14 +89,22 @@ app.controller('disqoverController', ['$http', function($http){
       console.log(error);
     })
   }
+
+  //////////////////// Toggle Button Functions/////////////////////
   this.wobble = function () {
-    console.log("hello");
     this.hype = !this.hype;
   };
+
   this.toggle = function () {
     console.log("hello");
     this.state = !this.state;
   };
+
+  this.tobble = function (page) {
+    this.crispy =!this.crispy;
+  };
+  //////////////////// Toggle Button Functions/////////////////////
+
   this.indexOfEditFormToShow = null
   this.logOut = function(){
     $http({
