@@ -31,7 +31,7 @@ app.controller('disqoverController', ['$http', function($http){
   this.addFollower = function(disqover) {
     $http({
       method: 'PUT',
-      url: '/disqover/' + disqover._id,
+      url: '/disqover/' + disqover._id + '/followers',
       data: {
         followers: this.followers
       }

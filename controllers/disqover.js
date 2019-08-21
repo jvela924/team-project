@@ -51,7 +51,14 @@ router.put('/comments/:id', (req, res) => {
     res.json(updatedDisqover);
   })
 })
-router.put('/:id', (req,res) => {
+router.put('/:id', (req, res) => {
+  Disqover.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedDisqover) => {
+    console.log(req.body);
+    console.log("this route is working");
+    res.json(updatedDisqover);
+  })
+})
+router.put('/:id/followers', (req,res) => {
   // req.body.username = req.session.currentUser.username
   // let artists = req.body.fav_artists.split(',')
   // req.body.fav_artists = artists
